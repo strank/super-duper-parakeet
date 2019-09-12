@@ -56,26 +56,8 @@ public class CreateConveyors : MonoBehaviour {
         conveyor.speed = speedParameter;
 
         Instantiate(conveyorPrefab, relativePosition, transform.rotation);
-        //newPlatform.GetComponent<SignalMathMul>().in2.initialValue = Random.Range(minInput2Param, maxInput2Param);
-
-        //axisChild = newPlatform.transform.GetChild(0).gameObject;
-        //axisChild.transform.localEulerAngles = new Vector3(
-        //    Random.Range(minRotationAngle.x, maxRotationAngle.x),
-        //    Random.Range(minRotationAngle.y, maxRotationAngle.y),
-        //    Random.Range(minRotationAngle.z, maxRotationAngle.z));
-
-        //newPlatform.GetComponentInChildren<LinearJoint>().maxValue = Random.Range(minMaxValueParam, maxMaxValueParam);
-        //newPlatform.GetComponentInChildren<LinearJoint>().maxSpeed = Random.Range(minMaxSpeedParam, maxMaxSpeedParam);
-        //newPlatform.GetComponentInChildren<LinearJoint>().maxAcceleration = Random.Range(minMaxAccelerationParam, maxMaxAccelerationParam);
-
         Debug.Log("CONVEYOR CREATED!");
     }
-
-    //private void AlterObject(GameObject alterObject)
-    //{
-    //    GameObject textChild = alterObject.transform.GetChild(0).gameObject;
-    //    textChild.transform.localEulerAngles = new Vector3(12.2f, 35.5f, 12.5f);
-    //}
 
     private void LoopInstantiation()
     {
