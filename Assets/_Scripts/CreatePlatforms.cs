@@ -66,27 +66,36 @@ public class CreatePlatforms : MonoBehaviour {
             Random.Range(minRotationAngle.x, maxRotationAngle.x),
             Random.Range(minRotationAngle.y, maxRotationAngle.y),
             Random.Range(minRotationAngle.z, maxRotationAngle.z));
-        //axisChild.AddComponent<LinearJoint>();
 
-        //newPlatform.GetComponentInChildren<LinearJoint>()
-        //newPlatform.GetComponentInChildren<LinearJoint>().body = newPlatform.transform;
-        //newPlatform.GetComponentInChildren<LinearJoint>().axis = axisChild.transform;
         newPlatform.GetComponentInChildren<LinearJoint>().maxValue = Random.Range(minMaxValueParam, maxMaxValueParam);
         newPlatform.GetComponentInChildren<LinearJoint>().maxSpeed = Random.Range(minMaxSpeedParam, maxMaxSpeedParam);
         newPlatform.GetComponentInChildren<LinearJoint>().maxAcceleration = Random.Range(minMaxAccelerationParam, maxMaxAccelerationParam);
 
-        //newPlatform.GetComponent<ServoMotor>().joint = axisChild.GetComponent<LinearJoint>();
+        Debug.Log("PLATFORM CREATED!");
+    }
 
-        //newPlatform.GetComponentInChildren<LinearJoint>().axis.localEulerAngles = rotationAngle;
+    private void InstantiateMovingPlatformVertical_EditPrefab(Vector3 relativePosition)
+    {
+        //GameObject movingPlatformPrefab = (GameObject)Instantiate(this.movingPlatformPrefab, relativePosition, Quaternion.identity);
 
+        movingPlatformPrefab.GetComponent<SignalMathMul>().in2.initialValue = Random.Range(minInput2Param, maxInput2Param);
+
+        axisChild = movingPlatformPrefab.transform.GetChild(0).gameObject;
+        axisChild.transform.localEulerAngles = new Vector3(
+            Random.Range(minRotationAngle.x, maxRotationAngle.x),
+            Random.Range(minRotationAngle.y, maxRotationAngle.y),
+            Random.Range(minRotationAngle.z, maxRotationAngle.z));
+
+        movingPlatformPrefab.GetComponentInChildren<LinearJoint>().maxValue = Random.Range(minMaxValueParam, maxMaxValueParam);
+        movingPlatformPrefab.GetComponentInChildren<LinearJoint>().maxSpeed = Random.Range(minMaxSpeedParam, maxMaxSpeedParam);
+        movingPlatformPrefab.GetComponentInChildren<LinearJoint>().maxAcceleration = Random.Range(minMaxAccelerationParam, maxMaxAccelerationParam);
+
+        Instantiate(movingPlatformPrefab, relativePosition, Quaternion.identity);
         Debug.Log("PLATFORM CREATED!");
     }
 
     private void AlterObject(GameObject alterObject)
     {
-        //alterObject.GetComponentInChildren<LinearJoint>().maxValue = maxValueParam;
-        //alterObject.GetComponentInChildren<LinearJoint>().maxSpeed = maxSpeedParam;
-
         GameObject textChild = alterObject.transform.GetChild(0).gameObject;
         textChild.transform.localEulerAngles = new Vector3(12.2f, 35.5f, 12.5f);
     }
@@ -99,7 +108,8 @@ public class CreatePlatforms : MonoBehaviour {
         {
             separationPosition = new Vector3(i * distanceApart, 0, 0) + transform.position;
 
-            InstantiateMovingPlatformVertical(separationPosition);
+            //InstantiateMovingPlatformVertical(separationPosition);
+            InstantiateMovingPlatformVertical_EditPrefab(separationPosition);
         }
     }
 
