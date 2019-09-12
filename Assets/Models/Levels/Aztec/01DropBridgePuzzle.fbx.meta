@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 678d4832dda33024a9cd2176d1c1908f
+timeCreated: 1484061102
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Bigtree.001
+    100004: D_Block.003
+    100006: D_Brick
+    100008: D_Brick.001
+    100010: D_Brick.002
+    100012: D_Bridge
+    100014: D_Dropground
+    100016: D_Dropground.001
+    100018: D_GapStick.001
+    100020: D_GapStick.002
+    100022: Island.001
+    100024: Talltree
+    100026: Talltree.001
+    100028: Talltree.002
+    100030: Island.001.Grass
+    100032: Island.001.Gravel
+    100034: Island.001.Wood
+    400000: //RootNode
+    400002: Bigtree.001
+    400004: D_Block.003
+    400006: D_Brick
+    400008: D_Brick.001
+    400010: D_Brick.002
+    400012: D_Bridge
+    400014: D_Dropground
+    400016: D_Dropground.001
+    400018: D_GapStick.001
+    400020: D_GapStick.002
+    400022: Island.001
+    400024: Talltree
+    400026: Talltree.001
+    400028: Talltree.002
+    400030: Island.001.Grass
+    400032: Island.001.Gravel
+    400034: Island.001.Wood
+    2300000: Bigtree.001
+    2300002: D_Block.003
+    2300004: D_Brick
+    2300006: D_Brick.001
+    2300008: D_Brick.002
+    2300010: D_Bridge
+    2300012: D_Dropground
+    2300014: D_Dropground.001
+    2300016: D_GapStick.001
+    2300018: D_GapStick.002
+    2300020: Island.001
+    2300022: Talltree
+    2300024: Talltree.001
+    2300026: Talltree.002
+    2300028: Island.001.Grass
+    2300030: Island.001.Gravel
+    2300032: Island.001.Wood
+    3300000: Bigtree.001
+    3300002: D_Block.003
+    3300004: D_Brick
+    3300006: D_Brick.001
+    3300008: D_Brick.002
+    3300010: D_Bridge
+    3300012: D_Dropground
+    3300014: D_Dropground.001
+    3300016: D_GapStick.001
+    3300018: D_GapStick.002
+    3300020: Island.001
+    3300022: Talltree
+    3300024: Talltree.001
+    3300026: Talltree.002
+    3300028: Island.001.Grass
+    3300030: Island.001.Gravel
+    3300032: Island.001.Wood
+    4300000: Island.001
+    4300002: Bigtree.001
+    4300004: Talltree.002
+    4300006: Talltree.001
+    4300008: Talltree
+    4300010: D_Block.003
+    4300012: D_GapStick.002
+    4300014: D_GapStick.001
+    4300016: D_Brick.001
+    4300018: D_Brick.002
+    4300020: D_Brick
+    4300022: D_Bridge
+    4300024: D_Dropground
+    4300026: D_Dropground.001
+    4300028: Island.001.Wood
+    4300030: Island.001.Grass
+    4300032: Island.001.Gravel
+    6400000: Bigtree.001
+    6400002: D_Block.003
+    6400004: D_Brick
+    6400006: D_Brick.001
+    6400008: D_Brick.002
+    6400010: D_Bridge
+    6400012: D_Dropground
+    6400014: D_Dropground.001
+    6400016: D_GapStick.001
+    6400018: D_GapStick.002
+    6400020: Island.001
+    6400022: Talltree
+    6400024: Talltree.001
+    6400026: Talltree.002
+    6400028: Island.001.Grass
+    6400030: Island.001.Gravel
+    6400032: Island.001.Wood
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

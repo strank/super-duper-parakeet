@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 6e79bf4f649120e4eb0336eb246dd3d9
+timeCreated: 1452373421
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Target.000
+    100004: Target.001
+    100006: Target.002
+    100008: Target.003
+    100010: Target.004
+    100012: Target.005
+    100014: Target.006
+    100016: Target.007
+    100018: Target.008
+    100020: Target.009
+    100022: Target.010
+    100024: Target.011
+    100026: Target.012
+    100028: Target.013
+    100030: Target.014
+    400000: //RootNode
+    400002: Target.000
+    400004: Target.001
+    400006: Target.002
+    400008: Target.003
+    400010: Target.004
+    400012: Target.005
+    400014: Target.006
+    400016: Target.007
+    400018: Target.008
+    400020: Target.009
+    400022: Target.010
+    400024: Target.011
+    400026: Target.012
+    400028: Target.013
+    400030: Target.014
+    2300000: Target.000
+    2300002: Target.001
+    2300004: Target.002
+    2300006: Target.003
+    2300008: Target.004
+    2300010: Target.005
+    2300012: Target.006
+    2300014: Target.007
+    2300016: Target.008
+    2300018: Target.009
+    2300020: Target.010
+    2300022: Target.011
+    2300024: Target.012
+    2300026: Target.013
+    2300028: Target.014
+    3300000: Target.000
+    3300002: Target.001
+    3300004: Target.002
+    3300006: Target.003
+    3300008: Target.004
+    3300010: Target.005
+    3300012: Target.006
+    3300014: Target.007
+    3300016: Target.008
+    3300018: Target.009
+    3300020: Target.010
+    3300022: Target.011
+    3300024: Target.012
+    3300026: Target.013
+    3300028: Target.014
+    4300000: Target.002
+    4300002: Target.001
+    4300004: Target.000
+    4300006: Target.007
+    4300008: Target.006
+    4300010: Target.005
+    4300012: Target.004
+    4300014: Target.003
+    4300016: Target.014
+    4300018: Target.013
+    4300020: Target.012
+    4300022: Target.011
+    4300024: Target.010
+    4300026: Target.009
+    4300028: Target.008
+    6400000: Target.000
+    6400002: Target.001
+    6400004: Target.002
+    6400006: Target.003
+    6400008: Target.004
+    6400010: Target.005
+    6400012: Target.006
+    6400014: Target.007
+    6400016: Target.008
+    6400018: Target.009
+    6400020: Target.010
+    6400022: Target.011
+    6400024: Target.012
+    6400026: Target.013
+    6400028: Target.014
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Siege
+    second: {fileID: 2100000, guid: 393a8ce5041cbd5419457f48e31de4dc, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 2
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,111 @@
+fileFormatVersion: 2
+guid: 9255e5f01a1a8d04ca17944fb8eba893
+timeCreated: 1460287019
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cube
+    100004: CreateRoomGrayBox
+    100006: CrateRoom
+    100008: CrateRoomWater
+    100010: CrateRoomGrayBox
+    100012: CrateRoomDoor
+    100014: CrateRoomGrayBox.001
+    400000: //RootNode
+    400002: Cube
+    400004: CreateRoomGrayBox
+    400006: CrateRoom
+    400008: CrateRoomWater
+    400010: CrateRoomGrayBox
+    400012: CrateRoomDoor
+    400014: CrateRoomGrayBox.001
+    2300000: Cube
+    2300002: CreateRoomGrayBox
+    2300004: CrateRoomWater
+    2300006: CrateRoomGrayBox
+    2300008: CrateRoomDoor
+    2300010: CrateRoomGrayBox.001
+    3300000: Cube
+    3300002: CreateRoomGrayBox
+    3300004: CrateRoomWater
+    3300006: CrateRoomGrayBox
+    3300008: CrateRoomDoor
+    3300010: CrateRoomGrayBox.001
+    4300000: Cube
+    4300002: CreateRoomGrayBox
+    4300004: CrateRoomWater
+    4300006: CrateRoomGrayBox
+    4300008: CrateRoomDoor
+    4300010: CrateRoomGrayBox.001
+    6400000: Cube
+    6400002: CreateRoomGrayBox
+    6400004: CrateRoomWater
+    6400006: CrateRoomGrayBox
+    6400008: CrateRoomDoor
+    6400010: CrateRoomGrayBox.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: e2097bf50b563ab42b4d2b36ae230185
+timeCreated: 1440745378
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Planks
+    100004: Rails
+    100006: Rail01
+    100008: Rail02
+    100010: Rail03
+    100012: RailCross01
+    100014: RailCross02
+    100016: Rail02_001
+    100018: RailStop
+    100020: RailStop_001
+    100022: RailStopDual
+    100024: Rail-01
+    100026: Rail-02
+    100028: Rail-03
+    100030: Rail-Cross01
+    100032: Rail-Cross02
+    100034: Rail-Stop
+    100036: Rail-StopDual
+    100038: Rail-End1
+    100040: Rail-End2
+    100042: Rail-Broken
+    100044: Rail-Broken2
+    100046: BezierCurve
+    100048: BezierCurve_001
+    100050: Empty
+    100052: Empty_001
+    100054: Rail-Broken2_001
+    100056: Rail-Broken2_002
+    100058: Rail-Broken2_P1
+    100060: Rail-Broken2_P2
+    400000: //RootNode
+    400002: Planks
+    400004: Rails
+    400006: Rail01
+    400008: Rail02
+    400010: Rail03
+    400012: RailCross01
+    400014: RailCross02
+    400016: Rail02_001
+    400018: RailStop
+    400020: RailStop_001
+    400022: RailStopDual
+    400024: Rail-01
+    400026: Rail-02
+    400028: Rail-03
+    400030: Rail-Cross01
+    400032: Rail-Cross02
+    400034: Rail-Stop
+    400036: Rail-StopDual
+    400038: Rail-End1
+    400040: Rail-End2
+    400042: Rail-Broken
+    400044: Rail-Broken2
+    400046: BezierCurve
+    400048: BezierCurve_001
+    400050: Empty
+    400052: Empty_001
+    400054: Rail-Broken2_001
+    400056: Rail-Broken2_002
+    400058: Rail-Broken2_P1
+    400060: Rail-Broken2_P2
+    2300000: //RootNode
+    2300002: Planks
+    2300004: Rails
+    2300006: Rail01
+    2300008: Rail02
+    2300010: Rail03
+    2300012: RailCross01
+    2300014: RailCross02
+    2300016: Rail02_001
+    2300018: RailStop
+    2300020: RailStop_001
+    2300022: RailStopDual
+    2300024: Rail-01
+    2300026: Rail-02
+    2300028: Rail-03
+    2300030: Rail-Cross01
+    2300032: Rail-Cross02
+    2300034: Rail-Stop
+    2300036: Rail-StopDual
+    2300038: Rail-End1
+    2300040: Rail-End2
+    2300042: Rail-Broken
+    2300044: Rail-Broken2
+    2300046: BezierCurve
+    2300048: BezierCurve_001
+    2300050: Rail-Broken2_001
+    2300052: Rail-Broken2_002
+    2300054: Rail-Broken2_P1
+    2300056: Rail-Broken2_P2
+    3300000: //RootNode
+    3300002: Planks
+    3300004: Rails
+    3300006: Rail01
+    3300008: Rail02
+    3300010: Rail03
+    3300012: RailCross01
+    3300014: RailCross02
+    3300016: Rail02_001
+    3300018: RailStop
+    3300020: RailStop_001
+    3300022: RailStopDual
+    3300024: Rail-01
+    3300026: Rail-02
+    3300028: Rail-03
+    3300030: Rail-Cross01
+    3300032: Rail-Cross02
+    3300034: Rail-Stop
+    3300036: Rail-StopDual
+    3300038: Rail-End1
+    3300040: Rail-End2
+    3300042: Rail-Broken
+    3300044: Rail-Broken2
+    3300046: BezierCurve
+    3300048: BezierCurve_001
+    3300050: Rail-Broken2_001
+    3300052: Rail-Broken2_002
+    3300054: Rail-Broken2_P1
+    3300056: Rail-Broken2_P2
+    4300000: Cube
+    4300002: Rails
+    4300004: Planks
+    4300006: RailCross02
+    4300008: Rail03
+    4300010: Rail02
+    4300012: Rail01
+    4300014: RailCross01
+    4300016: Rail02_001
+    4300018: RailStop
+    4300020: RailStop_001
+    4300022: RailStopDual
+    4300024: Rail-StopDual
+    4300026: Rail-Stop
+    4300028: Rail-Cross02
+    4300030: Rail-03
+    4300032: Rail-02
+    4300034: Rail-01
+    4300036: Rail-Cross01
+    4300038: Rail-End2
+    4300040: Rail-End1
+    4300042: Rail-Broken2
+    4300044: Rail-Broken
+    4300046: BezierCurve_001
+    4300048: BezierCurve
+    4300050: Rail-Broken2_002
+    4300052: Rail-Broken2_001
+    4300054: Rail-Broken2_P2
+    4300056: Rail-Broken2_P1
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

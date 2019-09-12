@@ -1,0 +1,109 @@
+{
+    "samples": [
+        {
+            "name": "IcicleLoop",
+            "category": "Emitters",
+            "isSwitch": false,
+            "isLoop": false,
+            "crossFade": 0.10000000149011612,
+            "clips": [
+                {
+                    "_id": "IcicleLoop",
+                    "filename": "Emitters/IcicleLoop.wav",
+                    "vB": 1.0,
+                    "vR": 0.0,
+                    "pB": 1.0,
+                    "pR": 0.0
+                }
+            ],
+            "vB": 1.0,
+            "vR": 0.0,
+            "pB": 1.0,
+            "pR": 0.0
+        },
+        {
+            "name": "IceAmbience",
+            "category": "Ambience",
+            "isSwitch": false,
+            "isLoop": false,
+            "crossFade": 0.10000000149011612,
+            "clips": [
+                {
+                    "_id": "IceAmbience",
+                    "filename": "Ambience/IceAmbience.wav",
+                    "vB": 1.0,
+                    "vR": 0.0,
+                    "pB": 1.0,
+                    "pR": 0.0
+                }
+            ],
+            "vB": 1.0,
+            "vR": 0.0,
+            "pB": 1.0,
+            "pR": 0.0
+        },
+        {
+            "name": "IceCubeDisplacementLoop",
+            "category": "Effects",
+            "isSwitch": false,
+            "isLoop": false,
+            "crossFade": 0.10000000149011612,
+            "clips": [
+                {
+                    "_id": "IceCubeDisplacementLoop",
+                    "filename": "Effects/IceCubeDisplacementLoop.wav",
+                    "vB": 1.0,
+                    "vR": 0.0,
+                    "pB": 1.0,
+                    "pR": 0.0
+                }
+            ],
+            "vB": 1.0,
+            "vR": 0.0,
+            "pB": 1.0,
+            "pR": 0.0
+        },
+        {
+            "name": "SeeSawCrackingLoop",
+            "category": "Effects",
+            "isSwitch": false,
+            "isLoop": false,
+            "crossFade": 0.10000000149011612,
+            "clips": [
+                {
+                    "_id": "SeeSawCrackingLoop",
+                    "filename": "Effects/SeeSawCrackingLoop.wav",
+                    "vB": 1.0,
+                    "vR": 0.0,
+                    "pB": 1.0,
+                    "pR": 0.0
+                }
+            ],
+            "vB": 1.0,
+            "vR": 0.0,
+            "pB": 1.0,
+            "pR": 0.0
+        },
+        {
+            "name": "IcicleDrop1",
+            "category": "Emitters",
+            "isSwitch": false,
+            "isLoop": false,
+            "crossFade": 0.10000000149011612,
+            "clips": [
+                {
+                    "_id": "IcicleDrop1",
+                    "filename": "Emitters/IcicleDrop1.wav",
+                    "vB": 1.0,
+                    "vR": 0.0,
+                    "pB": 1.0,
+                    "pR": 0.0
+                }
+            ],
+            "vB": 1.0,
+            "vR": 0.0,
+            "pB": 1.0,
+            "pR": 0.0
+        }
+    ]
+}

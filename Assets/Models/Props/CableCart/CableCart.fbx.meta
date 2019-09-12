@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 9fa4f32c7ec10794ab1123ed956eae02
+timeCreated: 1447169505
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: CableCart
+    100002: //RootNode
+    100004: CableWheels-Frame
+    100006: CableCart.COL-01
+    100008: CableCart.COL-02
+    100010: CableCart.COL-03
+    100012: CableCart.COL-04
+    100014: CableCart.COL-05
+    100016: CableCart.COL-06
+    100018: CableCart.COL-07
+    100020: CableCart.COL-08
+    100022: CableCart.COL-09
+    100024: CableCart.COL-10
+    100026: CableWheels-Frame.COL-1
+    100028: CableWheels-Frame.COL-2
+    100030: CableWheels-Frame.COL-3
+    100032: CableWheels-Frame.COL-4
+    100034: CableWheels-Frame.COL-5
+    100036: CableWheels.COL-1
+    100038: CableWheels.COL-2
+    100040: CableWheels
+    100042: CableCart.COL-10.001
+    400000: CableCart
+    400002: //RootNode
+    400004: CableWheels-Frame
+    400006: CableCart.COL-01
+    400008: CableCart.COL-02
+    400010: CableCart.COL-03
+    400012: CableCart.COL-04
+    400014: CableCart.COL-05
+    400016: CableCart.COL-06
+    400018: CableCart.COL-07
+    400020: CableCart.COL-08
+    400022: CableCart.COL-09
+    400024: CableCart.COL-10
+    400026: CableWheels-Frame.COL-1
+    400028: CableWheels-Frame.COL-2
+    400030: CableWheels-Frame.COL-3
+    400032: CableWheels-Frame.COL-4
+    400034: CableWheels-Frame.COL-5
+    400036: CableWheels.COL-1
+    400038: CableWheels.COL-2
+    400040: CableWheels
+    400042: CableCart.COL-10.001
+    2300000: CableCart
+    2300002: //RootNode
+    2300004: CableWheels-Frame
+    2300006: CableCart.COL-01
+    2300008: CableCart.COL-02
+    2300010: CableCart.COL-03
+    2300012: CableCart.COL-04
+    2300014: CableCart.COL-05
+    2300016: CableCart.COL-06
+    2300018: CableCart.COL-07
+    2300020: CableCart.COL-08
+    2300022: CableCart.COL-09
+    2300024: CableCart.COL-10
+    2300026: CableWheels-Frame.COL-1
+    2300028: CableWheels-Frame.COL-2
+    2300030: CableWheels-Frame.COL-3
+    2300032: CableWheels-Frame.COL-4
+    2300034: CableWheels-Frame.COL-5
+    2300036: CableWheels.COL-1
+    2300038: CableWheels.COL-2
+    2300040: CableWheels
+    2300042: CableCart.COL-10.001
+    3300000: CableCart
+    3300002: //RootNode
+    3300004: CableWheels-Frame
+    3300006: CableCart.COL-01
+    3300008: CableCart.COL-02
+    3300010: CableCart.COL-03
+    3300012: CableCart.COL-04
+    3300014: CableCart.COL-05
+    3300016: CableCart.COL-06
+    3300018: CableCart.COL-07
+    3300020: CableCart.COL-08
+    3300022: CableCart.COL-09
+    3300024: CableCart.COL-10
+    3300026: CableWheels-Frame.COL-1
+    3300028: CableWheels-Frame.COL-2
+    3300030: CableWheels-Frame.COL-3
+    3300032: CableWheels-Frame.COL-4
+    3300034: CableWheels-Frame.COL-5
+    3300036: CableWheels.COL-1
+    3300038: CableWheels.COL-2
+    3300040: CableWheels
+    3300042: CableCart.COL-10.001
+    4300000: CableWheels
+    4300002: CableWheels-Frame
+    4300004: CableCart
+    4300006: CableCart.COL-01
+    4300008: CableCart.COL-02
+    4300010: CableCart.COL-03
+    4300012: CableCart.COL-04
+    4300014: CableCart.COL-05
+    4300016: CableCart.COL-06
+    4300018: CableCart.COL-07
+    4300020: CableCart.COL-08
+    4300022: CableCart.COL-09
+    4300024: CableCart.COL-10
+    4300026: CableWheels-Frame.COL-1
+    4300028: CableWheels-Frame.COL-2
+    4300030: CableWheels-Frame.COL-3
+    4300032: CableWheels-Frame.COL-4
+    4300034: CableWheels-Frame.COL-5
+    4300036: CableWheels.COL-1
+    4300038: CableWheels.COL-2
+    4300040: CableCart.COL-10.001
+    6400000: CableCart
+    6400002: //RootNode
+    6400004: CableCart.COL-01
+    6400006: CableCart.COL-02
+    6400008: CableCart.COL-03
+    6400010: CableCart.COL-04
+    6400012: CableCart.COL-05
+    6400014: CableCart.COL-06
+    6400016: CableCart.COL-07
+    6400018: CableCart.COL-08
+    6400020: CableCart.COL-09
+    6400022: CableCart.COL-10
+    6400024: CableWheels-Frame
+    6400026: CableWheels-Frame.COL-1
+    6400028: CableWheels-Frame.COL-2
+    6400030: CableWheels-Frame.COL-3
+    6400032: CableWheels-Frame.COL-4
+    6400034: CableWheels-Frame.COL-5
+    6400036: CableWheels.COL-1
+    6400038: CableWheels.COL-2
+    6400040: CableWheels
+    6400042: CableCart.COL-10.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

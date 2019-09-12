@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: 060a8558816d6584b960e100caa67a57
+timeCreated: 1463835777
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BeltGround.001
+    100002: //RootNode
+    100004: ConveyorRoll.001
+    100006: ConveyorSegment.001
+    100008: CoalFall
+    100010: BeltGround.002
+    100012: FireStick
+    100014: FireStick.001
+    100016: ConveyorHoleBlock
+    100018: FireStick.002
+    100020: ConveyorReleaseGrab
+    100022: ConveyorRoll.002
+    100024: ConveyorSegment.002
+    100026: CoalFallGuides
+    100028: BeltM_RollEnd
+    100030: BeltM_RollStart
+    400000: BeltGround.001
+    400002: //RootNode
+    400004: ConveyorRoll.001
+    400006: ConveyorSegment.001
+    400008: CoalFall
+    400010: BeltGround.002
+    400012: FireStick
+    400014: FireStick.001
+    400016: ConveyorHoleBlock
+    400018: FireStick.002
+    400020: ConveyorReleaseGrab
+    400022: ConveyorRoll.002
+    400024: ConveyorSegment.002
+    400026: CoalFallGuides
+    400028: BeltM_RollEnd
+    400030: BeltM_RollStart
+    2300000: BeltGround.001
+    2300002: ConveyorRoll.001
+    2300004: ConveyorSegment.001
+    2300006: CoalFall
+    2300008: BeltGround.002
+    2300010: FireStick
+    2300012: FireStick.001
+    2300014: ConveyorHoleBlock
+    2300016: ConveyorReleaseGrab
+    2300018: ConveyorRoll.002
+    2300020: ConveyorSegment.002
+    2300022: CoalFallGuides
+    2300024: BeltM_RollEnd
+    2300026: BeltM_RollStart
+    3300000: BeltGround.001
+    3300002: ConveyorRoll.001
+    3300004: ConveyorSegment.001
+    3300006: CoalFall
+    3300008: BeltGround.002
+    3300010: FireStick
+    3300012: FireStick.001
+    3300014: ConveyorHoleBlock
+    3300016: ConveyorReleaseGrab
+    3300018: ConveyorRoll.002
+    3300020: ConveyorSegment.002
+    3300022: CoalFallGuides
+    3300024: BeltM_RollEnd
+    3300026: BeltM_RollStart
+    4300000: BeltGround.001
+    4300002: ConveyorRoll.001
+    4300004: ConveyorSegment.001
+    4300006: CoalFall
+    4300008: BeltGround.002
+    4300010: FireStick
+    4300012: FireStick.001
+    4300014: ConveyorHoleBlock
+    4300016: ConveyorReleaseGrab
+    4300018: ConveyorRoll.002
+    4300020: ConveyorSegment.002
+    4300022: CoalFallGuides
+    4300024: BeltM_RollStart
+    4300026: BeltM_RollEnd
+    6400000: BeltGround.001
+    6400002: ConveyorRoll.001
+    6400004: ConveyorSegment.001
+    6400006: CoalFall
+    6400008: BeltGround.002
+    6400010: FireStick
+    6400012: FireStick.001
+    6400014: ConveyorHoleBlock
+    6400016: ConveyorReleaseGrab
+    6400018: ConveyorRoll.002
+    6400020: ConveyorSegment.002
+    6400022: CoalFallGuides
+    6400024: BeltM_RollEnd
+    6400026: BeltM_RollStart
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
