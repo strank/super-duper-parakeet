@@ -7079,13 +7079,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1938113813}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1938113815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7111,7 +7111,7 @@ MonoBehaviour:
   maxMaxSpeedParam: 32.09
   minMaxAccelerationParam: 1.49
   maxMaxAccelerationParam: 36.9
-  isRunning: 0
+  isRunning: 1
 --- !u!114 &1938113816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7133,7 +7133,7 @@ MonoBehaviour:
   lengthParameter: 18
   radiusParameter: 2
   speedParameter: 3
-  isRunning: 1
+  isRunning: 0
 --- !u!43 &2018993452
 Mesh:
   m_ObjectHideFlags: 0
