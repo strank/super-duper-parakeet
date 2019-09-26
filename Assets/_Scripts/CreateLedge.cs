@@ -19,8 +19,10 @@ public class CreateLedge : MonoBehaviour {
     public float minZ = 0.0f;
     public float maxZ = 10.0f;
 
-    Vector3 ledgePosition = new Vector3();
+    Vector3[] ledgePosition;
 
+    private int numberOfTests;
+    private float separationDistance;
     private static CreateLedge instance;
     public GenerationSystem generationSystem;
     #endregion
@@ -41,14 +43,43 @@ public class CreateLedge : MonoBehaviour {
         // instance in time for other classes to GetInstance.
 
         //generationSystem = GenerationSystem.GetInstance();
-        //Debug.Log("CreateLedge got generation system reference as this: " + generationSystem);
+        GetDataForMultipleTests();
+
+        ledgePosition = new Vector3[numberOfTests];
 
         PositionLedge();
     }
 
+
     private void Start()
     {
-        GameObject newLedge = (GameObject)Instantiate(ledge, ledgePosition, Quaternion.identity);
+        GenerateLedges();
+    }
+
+
+    /*
+     * Gets necessary information from GenerationSystem in cases where multiple test scenarios are being created
+     */
+    private void GetDataForMultipleTests()
+    {
+        numberOfTests = generationSystem.GetNumberOfTests();
+        separationDistance = generationSystem.GetTestSeparationDistance();
+    }
+
+
+    /*
+     * Creates a number of ledges designated by the number of tests, and positions them each randomly.
+     * For cases with multiple tests, the general spawning areas are separated some distance, depending 
+     * on the number of tests.
+     */
+    private void GenerateLedges()
+    {
+        for (int i = 0; i < numberOfTests; i++)
+        {
+            // First add distance to ledge position depending on the separation distance and how many tests have been created
+            Vector3 adjustedLedgePostion = ledgePosition[i] + separationDistance * (float)i * new Vector3(0.0f, 0.0f, 1.0f);
+            GameObject newLedge = (GameObject)Instantiate(ledge, adjustedLedgePostion, Quaternion.identity);
+        }
     }
 
     /*
@@ -57,13 +88,21 @@ public class CreateLedge : MonoBehaviour {
      */
     private void PositionLedge()
     {
-        ledgePosition = new Vector3(
+        for(int i = 0; i < numberOfTests; i++)
+        {
+            ledgePosition[i] = new Vector3(
             Random.Range(minX, maxX),
             Random.Range(minHeight, maxHeight),
             Random.Range(minZ, maxZ));
 
-        // Passes height value to generation system
-        generationSystem.SetLedgeInformation(ledgePosition.y);
+            // Allows for positioning of entire instantiation system by moving parent game object
+            ledgePosition[i] += transform.position;
+
+            // Passes height value to generation system
+            generationSystem.SetLedgeInformation(ledgePosition[i].y, i);
+
+            Debug.Log("SYSTEM FACTOR: Ledge positioned at height: " + ledgePosition[i].y);
+        }
     }
 
     public static CreateLedge GetInstance()
