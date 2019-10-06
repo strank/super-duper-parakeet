@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Range
+public class ParameterRange
 {
     private float minimum;
     private float maximum;
@@ -32,14 +32,14 @@ public class Range
         }
     }
 
-    public Range(float min, float max)
+    public ParameterRange(float min, float max)
     {
         Minimum = min;
         Maximum = max;
     }
 }
 
-public class WeightedRange : Range
+public class WeightedRange : ParameterRange
 {
     private float weight;
     public float Weight
@@ -89,17 +89,21 @@ public class CreatePulley : MonoBehaviour {
     private Vector3 endPosition;
 
     [Header("Wheels")]
+    [Header("Object to Use as Wheels")]
+    public GameObject pulleyWheel;
     [Header("Quantity")]
     public int minWheels = 1;
     public int maxWheels = 3;
     private int numberOfWheels;
 
-    [Header("Position Area")]
-    public Vector3 minWheelPosition = Vector3.zero;
-    public Vector3 maxWheelPosition = new Vector3(10.0f, 10.0f, 10.0f);
+    [Header("Other")]
+    public float minSeparationBetweenWheels = 2.0f;
+    public float distanceFromEnds = 2.0f;
     private Vector3 wheelPosition;
+    private Vector3[] wheelPositions;
     private float minDistanceBelowRope = 3.0f;
-    private float minSeparationBetweenWheels = 2.0f;
+    private Vector3 wheelRangeStartPoint;
+    private Vector3 wheelRangeEndPoint;
 
 
     // Used if setting up to create several instances at once
@@ -139,13 +143,12 @@ public class CreatePulley : MonoBehaviour {
 
     private void Start()
     {
-        WeightedRange testRange = new WeightedRange(1.5f, 2.5f, 4.0f);
-        Debug.Log(testRange.Minimum + " also " + testRange.Maximum + " and this too " + testRange.Weight);
-
         RandomizeStartPosition();
         DetermineLength();
         PositionEndPoint();
         CreateWheelPositionRange();
+        PositionWheels();
+        GenerateWheels();
     }
 
     /*
@@ -210,7 +213,7 @@ public class CreatePulley : MonoBehaviour {
     /*
      * Creates the initial range of positions for instantiating the pulley wheel
      */
-    private Range CreateWheelPositionRange()
+    private WeightedRange CreateWheelPositionRange()
     {
         // Create the xz plane projection of the line between the start and end point
         // Also place that line below both the start and end point
@@ -226,18 +229,18 @@ public class CreatePulley : MonoBehaviour {
 
         // Creates the start and end point for wheel positions which is a projection of the start and end positions 
         // of the rope onto the xz plane at the determined height value
-        Vector3 wheelRangeStartPoint = new Vector3(
+        wheelRangeStartPoint = new Vector3(
             startPosition.x,
             wheelHeight,
             startPosition.z);
 
-        Vector3 wheelRangeEndPoint = new Vector3(
+        wheelRangeEndPoint = new Vector3(
             endPosition.x,
             wheelHeight,
             endPosition.z);
 
         float lengthOfRange = Vector3.Distance(wheelRangeStartPoint, wheelRangeEndPoint);
-        Range initialWheelPositionRange = new Range(separationDistance, lengthOfRange - separationDistance);
+        WeightedRange initialWheelPositionRange = new WeightedRange(distanceFromEnds, lengthOfRange - distanceFromEnds, 1.0f);
 
         Debug.DrawLine(startPosition, endPosition, Color.blue, 500.0f);
         Debug.DrawLine(wheelRangeStartPoint, wheelRangeEndPoint, Color.red, 500.0f);
@@ -254,28 +257,37 @@ public class CreatePulley : MonoBehaviour {
     private void PositionWheels()
     {
         numberOfWheels = Random.Range(minWheels, maxWheels);
-        Vector3[] wheelPositions = new Vector3[numberOfWheels];
+        wheelPositions = new Vector3[numberOfWheels];
 
-        List<Range> possiblePositions = new List<Range>();
-        Range firstRange = CreateWheelPositionRange();
-        possiblePositions.Add(firstRange);
+        List<WeightedRange> positionRanges = new List<WeightedRange>();
+        WeightedRange firstRange = CreateWheelPositionRange();
+        positionRanges.Add(firstRange);
 
         for (int i = 0; i < numberOfWheels; i++)
         {
             // Need to pick a range from the list of ranges, and then randomly select a value within that range
+            float rangePicker = Random.Range(0.0f, 1.0f);
+            float weightCheck = 0.0f;
+            WeightedRange selectedRange;
+            int rangeCounter = 0;
 
-
-
-
-
-            //Vector3 randomPositionAlongRope = startPosition + ropeDirection * Random.Range(0.0f, length);
-
-
-            // Checks newly selected point is far enough away from other determined wheel positions
-            for (int j = 0; j < i; j++)
+            while(weightCheck < rangePicker)
             {
-
+                weightCheck += positionRanges[rangeCounter].Weight;
+                rangeCounter++;
             }
+
+            // Loop completes once it finds the proper range, but still increments
+            // the counter one last time, so the selectedRange subtracts 1 to make up for this.
+            selectedRange = positionRanges[rangeCounter - 1];
+
+            // Selects a random value from the chosen range and uses this to set this wheel position
+            float selectedValue = Random.Range(selectedRange.Minimum, selectedRange.Maximum);
+            wheelPositions[i] = wheelRangeStartPoint + ropeDirection * selectedValue;
+
+            // Uses the randomly selected value to recalculate the possible position ranges
+            DetermineRanges(minSeparationBetweenWheels, selectedValue, positionRanges);
+            ReweightRangeList(positionRanges);
         }
     }
 
@@ -283,9 +295,9 @@ public class CreatePulley : MonoBehaviour {
      * Determines if a check value is within the buffer distance of any ranges within a list of ranges, 
      * and edits the list of ranges accordingly.
      */
-    private void DetermineRanges(float buffer, float check, List<Range> rangeList)
+    private void DetermineRanges(float buffer, float check, List<WeightedRange> rangeList)
     {
-        foreach (Range range in rangeList)
+        foreach (WeightedRange range in rangeList)
         {
             if(check <= (range.Minimum + buffer) && 
                 check >= (range.Maximum - buffer))
@@ -319,7 +331,7 @@ public class CreatePulley : MonoBehaviour {
 
                 // The new range uses the existing range's maximum, but has a new minimum 
                 // starting after the current check value.
-                Range additionalRange = new Range(check + buffer, range.Maximum);
+                WeightedRange additionalRange = new WeightedRange(check + buffer, range.Maximum, 0.0f);
 
                 // The current range is edited so that it keeps the same minimum, but its maximum is now 
                 // located before the check value.
@@ -329,6 +341,38 @@ public class CreatePulley : MonoBehaviour {
                 return;
             }
 
+        }
+    }
+
+    /*
+     * Takes a list of weighted ranges and recalculates their weights so that each individual weighted range 
+     * has a weight value which corresponds directly to the proportion of the total range of all weighted ranges 
+     * that that specific weighted range covers.
+     */
+    private void ReweightRangeList(List<WeightedRange> rangeList)
+    {
+        float rangeSum = 0.0f;
+
+        foreach (WeightedRange range in rangeList)
+        {
+            rangeSum += (range.Maximum - range.Minimum);
+        }
+
+        foreach (WeightedRange range in rangeList)
+        {
+            range.Weight = (range.Maximum - range.Minimum) / rangeSum;
+        }
+    }
+
+    /*
+     * Instantiates a number of pulley wheels equal to the number of locations within the 
+     * wheelPositions array at the location specified by the wheelPositions array.
+     */
+    private void GenerateWheels()
+    {
+        foreach (Vector3 v in wheelPositions)
+        {
+            Instantiate(pulleyWheel, v, Quaternion.identity);
         }
     }
 
