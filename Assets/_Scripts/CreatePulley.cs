@@ -256,7 +256,7 @@ public class CreatePulley : MonoBehaviour {
      */
     private void PositionWheels()
     {
-        numberOfWheels = Random.Range(minWheels, maxWheels);
+        numberOfWheels = Random.Range(minWheels, maxWheels + 1);
         wheelPositions = new Vector3[numberOfWheels];
 
         List<WeightedRange> positionRanges = new List<WeightedRange>();
