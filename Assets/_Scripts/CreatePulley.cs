@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HumanAPI;
 
 public class ParameterRange
 {
@@ -64,8 +65,11 @@ public class WeightedRange : ParameterRange
 public class CreatePulley : MonoBehaviour {
 
     #region Variables
+    public GameObject pulleyPrefab;
+
     [Header("Objects to Use as Pulley Ends")]
-    //public GameObject ledge;
+    public GameObject startPulleyMass;
+    public GameObject endPulleyMass;
 
     [Header("Parameter Ranges")]
     [Header("Rope")]
@@ -81,9 +85,6 @@ public class CreatePulley : MonoBehaviour {
     public Vector3 maxStart = new Vector3(20.0f, 20.0f, 20.0f);
     private Vector3 startPosition;
 
-    //[Header("End Point")]
-    //public Vector3 minEnd = new Vector3(1.0f, 1.0f, 1.0f);
-    //public Vector3 maxEnd = new Vector3(20.0f, 20.0f, 20.0f);
 
     // End will be determined by system to fit the proper length
     private Vector3 endPosition;
@@ -143,12 +144,13 @@ public class CreatePulley : MonoBehaviour {
 
     private void Start()
     {
-        RandomizeStartPosition();
-        DetermineLength();
-        PositionEndPoint();
-        CreateWheelPositionRange();
-        PositionWheels();
-        GenerateWheels();
+        //RandomizeStartPosition();
+        //DetermineLength();
+        //PositionEndPoint();
+        //CreateWheelPositionRange();
+        //PositionWheels();
+        //GenerateWheels();
+        PlaceObjectsOnRopeEnds();
     }
 
     /*
@@ -374,6 +376,33 @@ public class CreatePulley : MonoBehaviour {
         {
             Instantiate(pulleyWheel, v, Quaternion.identity);
         }
+    }
+
+    private void PlaceObjectsOnRopeEnds()
+    {
+        Vector3 TESTPOSITION = new Vector3(0f, 10f, 0f);
+        Vector3 ropeStartPosition = new Vector3(-9.5f, 0f, 0f);
+        Vector3 ropeEndPosition = new Vector3(9.5f, 0f, 0f);
+        Vector3 OFFSET = new Vector3(1.0f, 0f, 0f);
+
+        PulleySetup pulleySetup = pulleyPrefab.GetComponent<PulleySetup>();
+        Rope pulleyRope = pulleyPrefab.GetComponent<Rope>();
+
+        // Position Rope Start and Rope End
+        pulleySetup.ropeStart.transform.position = ropeStartPosition;
+        pulleySetup.ropeEnd.transform.position = ropeEndPosition;
+
+        // Instantiate the objects which make up the pulley end masses
+        Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
+        Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
+
+        // Set the FixedJoint connectedBody to the rigidbodys of the instantiated pulley end masses
+        FixedJoint startFixedJoint = pulleySetup.ropeStart.GetComponent<FixedJoint>();
+        FixedJoint endFixedJoint = pulleySetup.ropeEnd.GetComponent<FixedJoint>();
+        startFixedJoint.connectedBody = startPulleyMass.GetComponent<Rigidbody>();
+        endFixedJoint.connectedBody = endPulleyMass.GetComponent<Rigidbody>();
+
+        Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
     }
 
     /*
