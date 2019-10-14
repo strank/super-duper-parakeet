@@ -142,6 +142,12 @@ public class CreatePulley : MonoBehaviour {
 
     #region Unity Methods
 
+    private void Awake()
+    {
+        PlaceObjectsOnRopeEnds();
+
+    }
+
     private void Start()
     {
         //RandomizeStartPosition();
@@ -150,7 +156,6 @@ public class CreatePulley : MonoBehaviour {
         //CreateWheelPositionRange();
         //PositionWheels();
         //GenerateWheels();
-        PlaceObjectsOnRopeEnds();
     }
 
     /*
@@ -390,11 +395,19 @@ public class CreatePulley : MonoBehaviour {
 
         // Position Rope Start and Rope End
         pulleySetup.ropeStart.transform.position = ropeStartPosition;
+        Debug.Log("Rope start position is: " + ropeStartPosition);
         pulleySetup.ropeEnd.transform.position = ropeEndPosition;
+        Debug.Log("Rope end position is: " + ropeEndPosition);
 
         // Instantiate the objects which make up the pulley end masses
-        Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
-        Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
+        //Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
+        //Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
+        GameObject firstObject = (GameObject)Instantiate(startPulleyMass, pulleyPrefab.transform);
+        GameObject secondObject = (GameObject)Instantiate(endPulleyMass, pulleyPrefab.transform);
+        firstObject.transform.position = ropeStartPosition - OFFSET;
+        Debug.Log(startPulleyMass.name + " position is " + firstObject.transform.position);
+        secondObject.transform.position = ropeEndPosition + OFFSET;
+        Debug.Log(endPulleyMass.name + " position is " + secondObject.transform.position);
 
         // Set the FixedJoint connectedBody to the rigidbodys of the instantiated pulley end masses
         FixedJoint startFixedJoint = pulleySetup.ropeStart.GetComponent<FixedJoint>();
