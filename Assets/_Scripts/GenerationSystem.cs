@@ -57,7 +57,7 @@ public class GenerationSystem : MonoBehaviour {
         //ledgeHeight = height;
         ledgeHeight[index] = height;
 
-        Debug.Log("SYSTEM FACTOR: GenerationSystem received ledge height of: " + ledgeHeight);
+        //Debug.Log("SYSTEM FACTOR: GenerationSystem received ledge height of: " + ledgeHeight);
     }
 
     public float GetLedgeInformation(int index)
