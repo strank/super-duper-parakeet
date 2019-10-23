@@ -67,6 +67,10 @@ public class CreatePulley : MonoBehaviour {
     #region Variables
     public GameObject pulleyPrefab;
 
+    [Header("DEBUGGING: What to Generate")]
+    public bool isGeneratingRope = false;
+    public bool isGeneratingWheels = false;
+
     [Header("Objects to Use as Pulley Ends")]
     public GameObject startPulleyMass;
     public GameObject endPulleyMass;
@@ -141,21 +145,23 @@ public class CreatePulley : MonoBehaviour {
     #endregion
 
     #region Unity Methods
-
-    private void Awake()
-    {
-        PlaceObjectsOnRopeEnds();
-
-    }
-
+    
     private void Start()
     {
-        //RandomizeStartPosition();
-        //DetermineLength();
-        //PositionEndPoint();
-        //CreateWheelPositionRange();
-        //PositionWheels();
-        //GenerateWheels();
+        if (isGeneratingWheels)
+        {
+            RandomizeStartPosition();
+            DetermineLength();
+            PositionEndPoint();
+            CreateWheelPositionRange();
+            PositionWheels();
+            GenerateWheels();
+        }
+
+        if (isGeneratingRope)
+        {
+            PlaceObjectsOnRopeEnds();
+        }
     }
 
     /*
