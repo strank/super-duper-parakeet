@@ -160,6 +160,9 @@ public class CreatePulley : MonoBehaviour {
 
         if (isGeneratingRope)
         {
+            RandomizeStartPosition();
+            DetermineLength();
+            PositionEndPoint();
             PlaceObjectsOnRopeEnds();
         }
     }
@@ -392,37 +395,79 @@ public class CreatePulley : MonoBehaviour {
     private void PlaceObjectsOnRopeEnds()
     {
         Vector3 TESTPOSITION = new Vector3(0f, 10f, 0f);
-        Vector3 ropeStartPosition = new Vector3(-9.5f, 0f, 0f);
-        Vector3 ropeEndPosition = new Vector3(9.5f, 0f, 0f);
-        Vector3 OFFSET = new Vector3(1.0f, 0f, 0f);
+        //Vector3 ropeStartPosition = new Vector3(-9.5f, 0f, 0f);
+        //Vector3 ropeEndPosition = new Vector3(9.5f, 0f, 0f);
+        Vector3 OFFSET = new Vector3(0.5f, 0f, 0f);
 
-        PulleySetup pulleySetup = pulleyPrefab.GetComponent<PulleySetup>();
-        Rope pulleyRope = pulleyPrefab.GetComponent<Rope>();
+        GameObject quickPulley = (GameObject)Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
+        PulleySetup pulleySetup = quickPulley.GetComponent<PulleySetup>();
+        Rope pulleyRope = pulleySetup.rope;
+        Debug.Log("What is rope?" + pulleyRope.name);
 
-        // Position Rope Start and Rope End
-        pulleySetup.ropeStart.transform.position = ropeStartPosition;
-        Debug.Log("Rope start position is: " + ropeStartPosition);
-        pulleySetup.ropeEnd.transform.position = ropeEndPosition;
-        Debug.Log("Rope end position is: " + ropeEndPosition);
+        // Moves the internal pulley prefab empty gameobject transforms to the proper position.
+        // Needed to hold useful positional data as well as provide transform data for rope handles
+        pulleySetup.ropeStart.transform.position = startPosition;
+        pulleySetup.ropeEnd.transform.position = endPosition;
+        Debug.Log("Rope start transform position moved to : " + startPosition);
+        Debug.Log("Rope end transform position moved to : " + endPosition);
 
         // Instantiate the objects which make up the pulley end masses
         //Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
         //Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
-        GameObject firstObject = (GameObject)Instantiate(startPulleyMass, pulleyPrefab.transform);
-        GameObject secondObject = (GameObject)Instantiate(endPulleyMass, pulleyPrefab.transform);
-        firstObject.transform.position = ropeStartPosition - OFFSET;
-        Debug.Log(startPulleyMass.name + " position is " + firstObject.transform.position);
-        secondObject.transform.position = ropeEndPosition + OFFSET;
-        Debug.Log(endPulleyMass.name + " position is " + secondObject.transform.position);
+        Vector3 firstObjectPosition = startPosition - OFFSET;
+        Vector3 secondObjectPosition = endPosition + OFFSET;
+        GameObject firstObject = (GameObject)Instantiate(startPulleyMass, firstObjectPosition, Quaternion.identity, quickPulley.transform);
+        GameObject secondObject = (GameObject)Instantiate(endPulleyMass, secondObjectPosition, Quaternion.identity, quickPulley.transform);
 
-        // Set the FixedJoint connectedBody to the rigidbodys of the instantiated pulley end masses
-        FixedJoint startFixedJoint = pulleySetup.ropeStart.GetComponent<FixedJoint>();
-        FixedJoint endFixedJoint = pulleySetup.ropeEnd.GetComponent<FixedJoint>();
-        startFixedJoint.connectedBody = startPulleyMass.GetComponent<Rigidbody>();
-        endFixedJoint.connectedBody = endPulleyMass.GetComponent<Rigidbody>();
-
-        Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
+        SetRopeParameters(pulleyRope, pulleySetup.ropeStart.transform, pulleySetup.ropeEnd.transform, firstObject, secondObject);
     }
+
+    private void SetRopeParameters(Rope rope, Transform ropeStart, Transform ropeEnd, 
+        GameObject startObject, GameObject endObject)
+    {
+        rope.handles[0] = ropeStart;
+        rope.handles[1] = ropeEnd;
+
+        rope.startBody = startObject.GetComponent<Rigidbody>();
+        rope.endBody = endObject.GetComponent<Rigidbody>();
+
+        rope.gameObject.SetActive(true);
+    }
+
+    //private void PlaceObjectsOnRopeEnds()
+    //{
+    //    Vector3 TESTPOSITION = new Vector3(0f, 10f, 0f);
+    //    Vector3 ropeStartPosition = new Vector3(-9.5f, 0f, 0f);
+    //    Vector3 ropeEndPosition = new Vector3(9.5f, 0f, 0f);
+    //    Vector3 OFFSET = new Vector3(1.0f, 0f, 0f);
+
+    //    PulleySetup pulleySetup = pulleyPrefab.GetComponent<PulleySetup>();
+    //    Rope pulleyRope = pulleyPrefab.GetComponent<Rope>();
+
+    //    // Position Rope Start and Rope End
+    //    pulleySetup.ropeStart.transform.position = ropeStartPosition;
+    //    Debug.Log("Rope start position is: " + ropeStartPosition);
+    //    pulleySetup.ropeEnd.transform.position = ropeEndPosition;
+    //    Debug.Log("Rope end position is: " + ropeEndPosition);
+
+    //    // Instantiate the objects which make up the pulley end masses
+    //    //Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
+    //    //Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
+    //    GameObject firstObject = (GameObject)Instantiate(startPulleyMass, pulleyPrefab.transform);
+    //    GameObject secondObject = (GameObject)Instantiate(endPulleyMass, pulleyPrefab.transform);
+    //    firstObject.transform.position = ropeStartPosition - OFFSET;
+    //    Debug.Log(startPulleyMass.name + " position is " + firstObject.transform.position);
+    //    secondObject.transform.position = ropeEndPosition + OFFSET;
+    //    Debug.Log(endPulleyMass.name + " position is " + secondObject.transform.position);
+
+    //    // Set the FixedJoint connectedBody to the rigidbodys of the instantiated pulley end masses
+    //    FixedJoint startFixedJoint = pulleySetup.ropeStart.GetComponent<FixedJoint>();
+    //    FixedJoint endFixedJoint = pulleySetup.ropeEnd.GetComponent<FixedJoint>();
+    //    startFixedJoint.connectedBody = startPulleyMass.GetComponent<Rigidbody>();
+    //    endFixedJoint.connectedBody = endPulleyMass.GetComponent<Rigidbody>();
+
+    //    Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
+    //}
 
     /*
      * Gives a randomized Vector3 based on minimum and maximum bounds set by parameters.
