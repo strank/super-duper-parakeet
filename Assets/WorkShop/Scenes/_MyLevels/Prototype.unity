@@ -882,16 +882,16 @@ MonoBehaviour:
     type: 2}
   isGeneratingRope: 1
   isGeneratingWheels: 1
-  minLength: 15
-  maxLength: 20
-  minStart: {x: 0, y: 8, z: 0}
-  maxStart: {x: 1, y: 10, z: 1}
-  pulleyWheel: {fileID: 1242223216047440, guid: bd39b0416ab8a3b468a1f05b8ba81b7f,
-    type: 2}
-  minWheels: 1
+  minLength: 18
+  maxLength: 22
+  minStart: {x: 0, y: 15, z: 0}
+  maxStart: {x: 1, y: 20, z: 1}
+  minWheels: 2
   maxWheels: 2
   minSeparationBetweenWheels: 3
-  distanceFromEnds: 3
+  distanceFromEnds: 4
+  useDefaultDistanceBelowRopeForWheels: 0
+  distanceBelowRopeToSpawnWheels: 1
   generationSystem: {fileID: 1330186153}
 --- !u!114 &1330186156
 MonoBehaviour:
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleType: 1
-  pulleyType: 0
+  pulleyType: 1
   creationManager: {fileID: 1330186150}
   generatePulleyScenario: {fileID: 1346344125}
 --- !u!4 &1346344124
@@ -970,12 +970,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hooks:
   - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
-  platforms: []
-  massive: []
+  platforms:
+  - {fileID: 1153381881991686, guid: 12266ad62b8bc1640b21b6658bbc2358, type: 2}
+  massive:
+  - {fileID: 1306717682303484, guid: 348b405b4e0f09644a405c2c6c5e1514, type: 2}
+  - {fileID: 1831816210978484, guid: 228f4c45d738dc74d85eaa35e9c217b8, type: 2}
   genericMasses:
-  - {fileID: 1485185384672438, guid: cd4939d79afb6b542ae40a657325b45f, type: 2}
-  - {fileID: 1446958375739988, guid: ffcdbda553d709145b5ceb5067627300, type: 2}
-  wheels: []
+  - {fileID: 1295735708423260, guid: 2c7f08fc2975949409717aa144aed1db, type: 2}
+  - {fileID: 1674972137037218, guid: 8abf9759423588a49a3d17adc939cc80, type: 2}
+  wheels:
+  - {fileID: 1242223216047440, guid: bd39b0416ab8a3b468a1f05b8ba81b7f, type: 2}
+  - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
 --- !u!1 &1387846741
 GameObject:
   m_ObjectHideFlags: 0
