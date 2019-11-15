@@ -93,9 +93,8 @@ public class CreatePulley : MonoBehaviour {
     // End will be determined by system to fit the proper length
     private Vector3 endPosition;
 
+    private GameObject[] pulleyWheelOptions;
     [Header("Wheels")]
-    [Header("Object to Use as Wheels")]
-    public GameObject pulleyWheel;
     [Header("Quantity")]
     public int minWheels = 1;
     public int maxWheels = 3;
@@ -104,6 +103,9 @@ public class CreatePulley : MonoBehaviour {
     [Header("Other")]
     public float minSeparationBetweenWheels = 2.0f;
     public float distanceFromEnds = 2.0f;
+
+    public bool useDefaultDistanceBelowRopeForWheels = true;
+    public float distanceBelowRopeToSpawnWheels = 2.0f;
     private Vector3 wheelPosition;
     private Vector3[] wheelPositions;
     private float minDistanceBelowRope = 3.0f;
@@ -249,6 +251,14 @@ public class CreatePulley : MonoBehaviour {
 
     #region CreateWheels
 
+    /*
+     * Set the possible wheel object options for the generated pulley system.
+     */
+    public void SetPulleyWheelOptions(GameObject[] options)
+    {
+        pulleyWheelOptions = options;
+    }
+
     // The following method is overdone with the simplification done to PositionEndPoint, but I will 
     // keep it for now as a reference or if the approach changes.
     // With update, it should currently basically just draw the same line dictated by the startPosition and 
@@ -268,7 +278,11 @@ public class CreatePulley : MonoBehaviour {
             wheelHeight = endPosition.y;
         }
         // Assuming separationDistance is lower enough to start the wheel height to ensure rope falls onto wheel
-        wheelHeight -= minSeparationBetweenWheels;
+        // Can use another value if that assumption gives poor results
+        if (useDefaultDistanceBelowRopeForWheels)
+            wheelHeight -= minSeparationBetweenWheels;
+        else
+            wheelHeight -= distanceBelowRopeToSpawnWheels;
 
         // Creates the start and end point for wheel positions which is a projection of the start and end positions 
         // of the rope onto the xz plane at the determined height value
@@ -413,13 +427,14 @@ public class CreatePulley : MonoBehaviour {
      */
     private void GenerateWheels()
     {
-
         // Determine the rotation needed for the wheels to line up with the rope
         ropeAngle *= -1 * Mathf.Rad2Deg; // Needs the -1 so it properly lines up the Unity rotation
         Debug.Log("Wheel generator ropeAngle is: " + ropeAngle);
 
         foreach (Vector3 v in wheelPositions)
         {
+            int randomWheelIndex = Random.Range(0, pulleyWheelOptions.Length);
+            GameObject pulleyWheel = pulleyWheelOptions[randomWheelIndex];
             Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f));
         }
     }
