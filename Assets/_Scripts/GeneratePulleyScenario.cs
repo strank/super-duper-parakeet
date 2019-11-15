@@ -58,8 +58,10 @@ public class GeneratePulleyScenario : MonoBehaviour {
                 CreateHookScenario();
                 break;
             case PulleyType.Platform:
+                CreatePlatformScenario();
                 break;
             case PulleyType.HeavyDoor:
+                CreateMassiveScenario();
                 break;
             default:
                 break;
@@ -69,6 +71,23 @@ public class GeneratePulleyScenario : MonoBehaviour {
     private void CreateHookScenario()
     {
         createPulley.SetEndObjectOptions(hooks, genericMasses);
+        createPulley.SetPulleyWheelOptions(wheels);
+
+        createPulley.CreateVariedRope();
+    }
+
+    private void CreatePlatformScenario()
+    {
+        createPulley.SetEndObjectOptions(platforms, genericMasses);
+        createPulley.SetPulleyWheelOptions(wheels);
+
+        createPulley.CreateVariedRope();
+    }
+
+    private void CreateMassiveScenario()
+    {
+        createPulley.SetEndObjectOptions(massive, genericMasses);
+        createPulley.SetPulleyWheelOptions(wheels);
 
         createPulley.CreateVariedRope();
     }
