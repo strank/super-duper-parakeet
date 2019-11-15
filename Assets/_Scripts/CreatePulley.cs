@@ -67,13 +67,13 @@ public class CreatePulley : MonoBehaviour {
     #region Variables
     public GameObject pulleyPrefab;
 
-    [Header("DEBUGGING: What to Generate")]
+    [Header("What to Generate")]
     public bool isGeneratingRope = false;
     public bool isGeneratingWheels = false;
 
     [Header("Objects to Use as Pulley Ends")]
-    public GameObject startPulleyMass;
-    public GameObject endPulleyMass;
+    private GameObject[] startPulleyMassOptions;
+    private GameObject[] endPulleyMassOptions;
 
     [Header("Parameter Ranges")]
     [Header("Rope")]
@@ -148,23 +148,49 @@ public class CreatePulley : MonoBehaviour {
     
     private void Start()
     {
-        if (isGeneratingWheels)
-        {
-            RandomizeStartPosition();
-            DetermineLength();
-            PositionEndPoint();
-            CreateWheelPositionRange();
-            PositionWheels();
-            GenerateWheels();
-        }
+        //if (isGeneratingWheels)
+        //{
+        //    RandomizeStartPosition();
+        //    DetermineLength();
+        //    PositionEndPoint();
+        //    CreateWheelPositionRange();
+        //    PositionWheels();
+        //    GenerateWheels();
+        //}
 
-        if (isGeneratingRope)
-        {
-            RandomizeStartPosition();
-            DetermineLength();
-            PositionEndPoint();
-            PlaceObjectsOnRopeEnds();
-        }
+        //if (isGeneratingRope)
+        //{
+        //    CreateVariedRope();
+        //}
+    }
+
+    /*
+     * Conglomerates all the methods required to generate a rope so that it is easy to call a simple method 
+     * from another object to generate the full rope.
+     */
+    public void CreateVariedRope()
+    {
+        RandomizeStartPosition();
+        DetermineLength();
+        PositionEndPoint();
+
+        if (isGeneratingWheels)
+            CreatePulleyWheelSetup();
+
+        PlaceObjectsOnRopeEnds();
+    }
+
+    /*
+     * Conglomerates all the methods required to properly setup wheels of pulley system with variance
+     */
+    private void CreatePulleyWheelSetup()
+    {
+        //RandomizeStartPosition();
+        //DetermineLength();
+        //PositionEndPoint();
+        CreateWheelPositionRange();
+        PositionWheels();
+        GenerateWheels();
     }
 
     /*
@@ -221,6 +247,7 @@ public class CreatePulley : MonoBehaviour {
         Debug.Log("Randomized pulley end position is: " + endPosition);
     }
 
+    #region CreateWheels
 
     // The following method is overdone with the simplification done to PositionEndPoint, but I will 
     // keep it for now as a reference or if the approach changes.
@@ -240,7 +267,7 @@ public class CreatePulley : MonoBehaviour {
         {
             wheelHeight = endPosition.y;
         }
-        // Assuming separationDistance is enough lower to start the wheel height to ensure rope falls onto wheel
+        // Assuming separationDistance is lower enough to start the wheel height to ensure rope falls onto wheel
         wheelHeight -= minSeparationBetweenWheels;
 
         // Creates the start and end point for wheel positions which is a projection of the start and end positions 
@@ -272,7 +299,7 @@ public class CreatePulley : MonoBehaviour {
      */
     private void PositionWheels()
     {
-        numberOfWheels = Random.Range(minWheels, maxWheels + 1);
+        numberOfWheels = Random.Range(minWheels, maxWheels + 1); // Need the plus 1 because the maximum of the range is exclusive
         wheelPositions = new Vector3[numberOfWheels];
 
         List<WeightedRange> positionRanges = new List<WeightedRange>();
@@ -386,23 +413,47 @@ public class CreatePulley : MonoBehaviour {
      */
     private void GenerateWheels()
     {
+
+        // Determine the rotation needed for the wheels to line up with the rope
+        ropeAngle *= -1 * Mathf.Rad2Deg; // Needs the -1 so it properly lines up the Unity rotation
+        Debug.Log("Wheel generator ropeAngle is: " + ropeAngle);
+
         foreach (Vector3 v in wheelPositions)
         {
-            Instantiate(pulleyWheel, v, Quaternion.identity);
+            Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f));
         }
     }
 
+    #endregion
+
+    #region CreateRopeEnds
+
+    /*
+     * Allows another object to set the possible mass object options for the different ends of the rope 
+     * system.
+     */
+    public void SetEndObjectOptions(GameObject[] startOptions, GameObject[] endOptions)
+    {
+        startPulleyMassOptions = startOptions;
+        endPulleyMassOptions = endOptions;
+    }
+
+    /*
+     * Instantiates the base prefab used for the pulley system, as well as the objects determined to be the 
+     * ones at the end(s) of the pulley system.
+     * Also connects these instantiated objects to the rope of the base prefab to solidify the entire 
+     * pulley system.
+     */
     private void PlaceObjectsOnRopeEnds()
     {
         Vector3 TESTPOSITION = new Vector3(0f, 10f, 0f);
-        //Vector3 ropeStartPosition = new Vector3(-9.5f, 0f, 0f);
-        //Vector3 ropeEndPosition = new Vector3(9.5f, 0f, 0f);
         Vector3 OFFSET = new Vector3(0.5f, 0f, 0f);
+        GameObject firstObject = null;
+        GameObject secondObject = null;
 
         GameObject quickPulley = (GameObject)Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
         PulleySetup pulleySetup = quickPulley.GetComponent<PulleySetup>();
         Rope pulleyRope = pulleySetup.rope;
-        Debug.Log("What is rope?" + pulleyRope.name);
 
         // Moves the internal pulley prefab empty gameobject transforms to the proper position.
         // Needed to hold useful positional data as well as provide transform data for rope handles
@@ -412,62 +463,42 @@ public class CreatePulley : MonoBehaviour {
         Debug.Log("Rope end transform position moved to : " + endPosition);
 
         // Instantiate the objects which make up the pulley end masses
-        //Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
-        //Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
         Vector3 firstObjectPosition = startPosition - OFFSET;
         Vector3 secondObjectPosition = endPosition + OFFSET;
-        GameObject firstObject = (GameObject)Instantiate(startPulleyMass, firstObjectPosition, Quaternion.identity, quickPulley.transform);
-        GameObject secondObject = (GameObject)Instantiate(endPulleyMass, secondObjectPosition, Quaternion.identity, quickPulley.transform);
+        if(startPulleyMassOptions.Length > 0)
+        {
+            GameObject startPulleyMass = startPulleyMassOptions[Random.Range(0, startPulleyMassOptions.Length)];
+            firstObject = (GameObject)Instantiate(startPulleyMass, firstObjectPosition, Quaternion.identity, quickPulley.transform);
+        }
+        if(endPulleyMassOptions.Length > 0)
+        {
+            GameObject endPulleyMass = endPulleyMassOptions[Random.Range(0, endPulleyMassOptions.Length)];
+            secondObject = (GameObject)Instantiate(endPulleyMass, secondObjectPosition, Quaternion.identity, quickPulley.transform);
+        }
 
         SetRopeParameters(pulleyRope, pulleySetup.ropeStart.transform, pulleySetup.ropeEnd.transform, firstObject, secondObject);
     }
 
+    /*
+     * Effectively connects the startObject and the endObject to the rope object that is 
+     * passed in all into a single rope system.
+     */
     private void SetRopeParameters(Rope rope, Transform ropeStart, Transform ropeEnd, 
         GameObject startObject, GameObject endObject)
     {
         rope.handles[0] = ropeStart;
         rope.handles[1] = ropeEnd;
 
-        rope.startBody = startObject.GetComponent<Rigidbody>();
-        rope.endBody = endObject.GetComponent<Rigidbody>();
+        if(startObject != null)
+            rope.startBody = startObject.GetComponentInChildren<Rigidbody>();
+
+        if(endObject != null)
+            rope.endBody = endObject.GetComponentInChildren<Rigidbody>();
 
         rope.gameObject.SetActive(true);
     }
 
-    //private void PlaceObjectsOnRopeEnds()
-    //{
-    //    Vector3 TESTPOSITION = new Vector3(0f, 10f, 0f);
-    //    Vector3 ropeStartPosition = new Vector3(-9.5f, 0f, 0f);
-    //    Vector3 ropeEndPosition = new Vector3(9.5f, 0f, 0f);
-    //    Vector3 OFFSET = new Vector3(1.0f, 0f, 0f);
-
-    //    PulleySetup pulleySetup = pulleyPrefab.GetComponent<PulleySetup>();
-    //    Rope pulleyRope = pulleyPrefab.GetComponent<Rope>();
-
-    //    // Position Rope Start and Rope End
-    //    pulleySetup.ropeStart.transform.position = ropeStartPosition;
-    //    Debug.Log("Rope start position is: " + ropeStartPosition);
-    //    pulleySetup.ropeEnd.transform.position = ropeEndPosition;
-    //    Debug.Log("Rope end position is: " + ropeEndPosition);
-
-    //    // Instantiate the objects which make up the pulley end masses
-    //    //Instantiate(startPulleyMass, pulleySetup.ropeStart.transform.position - OFFSET, Quaternion.identity);
-    //    //Instantiate(endPulleyMass, pulleySetup.ropeEnd.transform.position + OFFSET, Quaternion.identity);
-    //    GameObject firstObject = (GameObject)Instantiate(startPulleyMass, pulleyPrefab.transform);
-    //    GameObject secondObject = (GameObject)Instantiate(endPulleyMass, pulleyPrefab.transform);
-    //    firstObject.transform.position = ropeStartPosition - OFFSET;
-    //    Debug.Log(startPulleyMass.name + " position is " + firstObject.transform.position);
-    //    secondObject.transform.position = ropeEndPosition + OFFSET;
-    //    Debug.Log(endPulleyMass.name + " position is " + secondObject.transform.position);
-
-    //    // Set the FixedJoint connectedBody to the rigidbodys of the instantiated pulley end masses
-    //    FixedJoint startFixedJoint = pulleySetup.ropeStart.GetComponent<FixedJoint>();
-    //    FixedJoint endFixedJoint = pulleySetup.ropeEnd.GetComponent<FixedJoint>();
-    //    startFixedJoint.connectedBody = startPulleyMass.GetComponent<Rigidbody>();
-    //    endFixedJoint.connectedBody = endPulleyMass.GetComponent<Rigidbody>();
-
-    //    Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
-    //}
+    #endregion
 
     /*
      * Gives a randomized Vector3 based on minimum and maximum bounds set by parameters.
