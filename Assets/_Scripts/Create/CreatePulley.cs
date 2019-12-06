@@ -3,65 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using HumanAPI;
 
-public class ParameterRange
-{
-    private float minimum;
-    private float maximum;
-
-    public float Minimum
-    {
-        get {
-            return minimum;
-        }
-
-        set
-        {
-            minimum = value;
-        }
-    }
-
-    public float Maximum
-    {
-        get
-        {
-            return maximum;
-        }
-
-        set
-        {
-            maximum = value;
-        }
-    }
-
-    public ParameterRange(float min, float max)
-    {
-        Minimum = min;
-        Maximum = max;
-    }
-}
-
-public class WeightedRange : ParameterRange
-{
-    private float weight;
-    public float Weight
-    {
-        get
-        {
-            return weight;
-        }
-
-        set
-        {
-            weight = value;
-        }
-    }
-
-    public WeightedRange(float min, float max, float p) : base(min, max)
-    {
-        Weight = p;
-    }
-}
-
 public class CreatePulley : MonoBehaviour {
 
     #region Variables
@@ -147,24 +88,6 @@ public class CreatePulley : MonoBehaviour {
     #endregion
 
     #region Unity Methods
-    
-    private void Start()
-    {
-        //if (isGeneratingWheels)
-        //{
-        //    RandomizeStartPosition();
-        //    DetermineLength();
-        //    PositionEndPoint();
-        //    CreateWheelPositionRange();
-        //    PositionWheels();
-        //    GenerateWheels();
-        //}
-
-        //if (isGeneratingRope)
-        //{
-        //    CreateVariedRope();
-        //}
-    }
 
     /*
      * Conglomerates all the methods required to generate a rope so that it is easy to call a simple method 
@@ -200,7 +123,7 @@ public class CreatePulley : MonoBehaviour {
      */
     private void RandomizeStartPosition()
     {
-        startPosition = RandomVector3WithinBounds(minStart, maxStart);
+        startPosition = RandomGeneration.RandomVector3WithinBounds(minStart, maxStart);
         Debug.Log("Randomzied pulley start position is: " + startPosition);
     }
 
@@ -514,22 +437,6 @@ public class CreatePulley : MonoBehaviour {
     }
 
     #endregion
-
-    /*
-     * Gives a randomized Vector3 based on minimum and maximum bounds set by parameters.
-     * Vector3 will be somewhere within a bounding cube created by the min and max 
-     * bounding parameters.
-     * The bounding cubes dimensions would be (max.x - min.x, max.y - min.y, max.z - min.z)
-     */
-    private Vector3 RandomVector3WithinBounds(Vector3 min, Vector3 max)
-    {
-        Vector3 determinedVector = new Vector3(
-            Random.Range(min.x, max.x),
-            Random.Range(min.y, max.y),
-            Random.Range(min.z, max.z));
-
-        return determinedVector;
-    }
 
     #endregion
 }
