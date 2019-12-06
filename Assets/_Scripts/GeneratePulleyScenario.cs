@@ -7,7 +7,7 @@ public class GeneratePulleyScenario : MonoBehaviour {
     #region Variables
 
     private ScenarioManager scenarioManager;
-    private GameObject creationManager;
+    public GameObject creationManager;
     private CreatePulley createPulley;
 
     private PulleyType type;
@@ -31,8 +31,9 @@ public class GeneratePulleyScenario : MonoBehaviour {
 
     private void Awake()
     {
-        scenarioManager = ScenarioManager.Instance;
-        creationManager = scenarioManager.creationManager;
+        //scenarioManager = ScenarioManager.Instance;
+        scenarioManager = FindObjectOfType<ScenarioManager>();
+        //creationManager = scenarioManager.creationManager;
         createPulley = creationManager.GetComponent<CreatePulley>();
 
         // Nothing will work as intended if any of these references are not properly obtained.
