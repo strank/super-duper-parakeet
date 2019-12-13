@@ -35,7 +35,7 @@ public class DemoManager : MonoBehaviour {
         {
             if (instance == null)
             {
-                new ScenarioManager();
+                new DemoManager();
             }
 
             return instance;
@@ -58,7 +58,7 @@ public class DemoManager : MonoBehaviour {
     [SerializeField] private float spacingBetweenScenarios = 10.0f;
 
     // Manager References
-    public GameObject creationManager;
+    public static GameObject creationManager;
 
     #endregion
 
@@ -68,7 +68,9 @@ public class DemoManager : MonoBehaviour {
     private void Awake()
     {
         if (creationManager == null)
+        {
             Debug.LogWarning("Scenario Manager has no Creation Manager reference.");
+        }
 
         if (generateSpecificScenario)
             SpecificScenario();
@@ -115,6 +117,9 @@ public class DemoManager : MonoBehaviour {
         for (int i = 0; i < numberOfScenariosToGenerate; i++)
         {
             int randomScenarioIndex = Random.Range(0, possibleScenarios.Count);
+            ScenarioManager selectedScenario = possibleScenarios[randomScenarioIndex];
+            selectedScenario.centralLocation = new Vector3(i * spacingBetweenScenarios, 0.0f, 0.0f);
+            selectedScenario.BuildScenario();
 
             // TODO: Use method consistent between all scenarios to generate
             // TODO: Pass position with spacing factor to scenario to give it 
