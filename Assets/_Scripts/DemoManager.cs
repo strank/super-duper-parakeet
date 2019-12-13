@@ -58,7 +58,8 @@ public class DemoManager : MonoBehaviour {
     [SerializeField] private float spacingBetweenScenarios = 10.0f;
 
     // Manager References
-    public static GameObject creationManager;
+    public GameObject creationManager;
+    public GameObject scenarioManager;
 
     #endregion
 
@@ -69,22 +70,27 @@ public class DemoManager : MonoBehaviour {
     {
         if (creationManager == null)
         {
-            Debug.LogWarning("Scenario Manager has no Creation Manager reference.");
+            Debug.LogWarning("Demo Manager has no Creation Manager reference.");
         }
+
+        //DebugPossibleScenariosArray(pulleyScenarios);
 
         if (generateSpecificScenario)
             SpecificScenario();
+        else
+        {
+            if (usePulleyScenarios)
+                AddScenariosToPossible(pulleyScenarios);
 
-        if (usePulleyScenarios)
-            AddScenariosToPossible(pulleyScenarios);
+            if (useSeesawScenarios)
+                AddScenariosToPossible(seesawScenarios);
 
-        if (useSeesawScenarios)
-            AddScenariosToPossible(seesawScenarios);
+            if (useSwingingPlatformScenarios)
+                AddScenariosToPossible(swingingPlatformScenarios);
 
-        if (useSwingingPlatformScenarios)
-            AddScenariosToPossible(swingingPlatformScenarios);
+            CreateScenarios();
+        }
 
-        CreateScenarios();
     }
 
     /*
@@ -98,7 +104,18 @@ public class DemoManager : MonoBehaviour {
                 Debug.Log("Needs seesaw types");
                 break;
             case PuzzleType.Pulley:
-                //generatePulleyScenario.Type = pulleyType;
+                switch (pulleyType)
+                {
+                    case PulleyType.Hook:
+                        Debug.Log("Not in yet");
+                        break;
+                    case PulleyType.HeavyDoor:
+                        scenarioManager.GetComponent<HeavyDoorPulleyScenario>().BuildScenario();
+                        break;
+                    case PulleyType.Platform:
+                        Debug.Log("Not in yet");
+                        break;
+                }
                 break;
             case PuzzleType.SwingPlatform:
                 Debug.Log("Needs swing platform types");
@@ -130,9 +147,25 @@ public class DemoManager : MonoBehaviour {
 
     private void AddScenariosToPossible(ScenarioManager[] scenariosToAdd)
     {
-        foreach (ScenarioManager scenario in scenariosToAdd)
+        //DebugPossibleScenariosArray(scenariosToAdd);
+        //foreach (ScenarioManager scenario in scenariosToAdd)
+        if (scenariosToAdd.Length != 0)
         {
-            possibleScenarios.Add(scenario);
+            foreach (ScenarioManager scenario in scenariosToAdd)
+            {
+                possibleScenarios.Add(scenario);
+            }
+        }
+        else
+            Debug.Log("scenariosToAdd is empty.");
+        
+    }
+
+    private void DebugPossibleScenariosArray(ScenarioManager[] array)
+    {
+        foreach (ScenarioManager scenario in array)
+        {
+            Debug.Log("Current scenarios in: " + array + " are the following " + scenario.name);
         }
     }
 
