@@ -6,7 +6,6 @@ using HumanAPI;
 public class CreateRope : MonoBehaviour {
 
     #region Variables
-    private Vector3 startPosition;
     private Vector3 minStart;
     private Vector3 maxStart;
 
@@ -17,10 +16,35 @@ public class CreateRope : MonoBehaviour {
     private GameObject[] endPulleyMassOptions;
 
     // Determined within this Create class
+    private Vector3 startPosition;
+    public Vector3 StartPosition
+    {
+        get { return startPosition; }
+    }
+
     private float length;
-    private float ropeAngle;
-    private Vector3 ropeDirection;
+    public float Length
+    {
+        get { return length; }
+    }
+
     private Vector3 endPosition;
+    public Vector3 EndPosition
+    {
+        get { return endPosition; }
+    }
+
+    private float ropeAngle;
+    public float RopeAngle
+    {
+        get { return ropeAngle; }
+    }
+
+    private Vector3 ropeDirection;
+    public Vector3 RopeDirection
+    {
+        get { return ropeDirection; }
+    }
 
     // Always set for this Create class
     public GameObject pulleyPrefab;
@@ -162,6 +186,11 @@ public class CreateRope : MonoBehaviour {
             rope.endBody = endObject.GetComponentInChildren<Rigidbody>();
 
         rope.gameObject.SetActive(true);
+    }
+
+    public void GetRopeData()
+    {
+
     }
 
     //private void Start()

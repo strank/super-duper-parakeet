@@ -36,7 +36,7 @@ public class CreatePulleyWheel : MonoBehaviour {
 
     public void BuildPulleyWheel(Vector3 _startPosition, Vector3 _endPosition, bool _useDefaultDistanceBelowRopeForWheels, 
         float _distanceBelowRopeToSpawnWheels, float _minSeparationBetweenWheels, float _ropeAngle, Vector3 _ropeDirection, 
-        float _distanceFromEnds)
+        float _distanceFromEnds, int _minWheels, int _maxWheels, GameObject[] _pulleyWheelOptions)
     {
         startPosition = _startPosition;
         endPosition = _endPosition;
@@ -46,8 +46,10 @@ public class CreatePulleyWheel : MonoBehaviour {
         ropeAngle = _ropeAngle;
         ropeDirection = _ropeDirection;
         distanceFromEnds = _distanceFromEnds;
+        minWheels = _minWheels;
+        maxWheels = _maxWheels;
+        pulleyWheelOptions = _pulleyWheelOptions;
 
-        CreateWheelPositionRange();
         PositionWheels();
         GenerateWheels();
     }
@@ -223,6 +225,7 @@ public class CreatePulleyWheel : MonoBehaviour {
         // Determine the rotation needed for the wheels to line up with the rope
         ropeAngle *= -1 * Mathf.Rad2Deg; // Needs the -1 so it properly lines up the Unity rotation
         Debug.Log("Wheel generator ropeAngle is: " + ropeAngle);
+        Debug.Log("Count for wheel positions is: " + wheelPositions.Length);
 
         foreach (Vector3 v in wheelPositions)
         {

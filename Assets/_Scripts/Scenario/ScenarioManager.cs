@@ -6,7 +6,7 @@ public abstract class ScenarioManager : MonoBehaviour {
 
     #region Variables
     public Vector3 centralLocation;
-    private GameObject creationManager;
+    protected GameObject creationManager;
 
     #endregion
 
@@ -16,7 +16,7 @@ public abstract class ScenarioManager : MonoBehaviour {
     {
         // Ensures every object inheriting from ScenarioManager has a reference to the 
         // creationManager gameObject that holds all the Create classes
-        creationManager = DemoManager.creationManager;
+        creationManager = DemoManager.Instance.creationManager;
     }
 
     public abstract void BuildScenario();

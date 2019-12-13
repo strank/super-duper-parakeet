@@ -8,9 +8,9 @@ public abstract class PulleyScenarioManager : ScenarioManager
     // Will contain any information that all Pulley Scenarios will use
 
     #region Variables
-    [Header("What to Generate")]
-    public bool isGeneratingRope = false;
-    public bool isGeneratingWheels = false;
+    //[Header("What to Generate")]
+    //public bool isGeneratingRope = false;
+    //public bool isGeneratingWheels = false;
 
     [Header("Objects to Use as Pulley Ends")]
     [SerializeField]private GameObject[] startPulleyMassOptions;
@@ -61,8 +61,16 @@ public abstract class PulleyScenarioManager : ScenarioManager
      */
     protected void CreateVariedRope()
     {
-        DemoManager.creationManager.GetComponent<CreateRope>().BuildRope(minStart, maxStart, minLength, maxLength,
-            startPulleyMassOptions, endPulleyMassOptions);
+        CreateRope rope = creationManager.GetComponent<CreateRope>();
+
+        rope.BuildRope(minStart, maxStart, minLength, maxLength, startPulleyMassOptions, endPulleyMassOptions);
+
+        // Allows CreateRope to calculate these first, and then bring the values back here to use in CreatePulleyWheelSetup
+        ropeAngle = rope.RopeAngle;
+        ropeDirection = rope.RopeDirection;
+        length = rope.Length;
+        endPosition = rope.EndPosition;
+        startPosition = rope.StartPosition;
     }
 
     /*
@@ -70,9 +78,9 @@ public abstract class PulleyScenarioManager : ScenarioManager
      */
     protected void CreatePulleyWheelSetup()
     {
-        DemoManager.creationManager.GetComponent<CreatePulleyWheel>().BuildPulleyWheel(startPosition, endPosition, 
+        creationManager.GetComponent<CreatePulleyWheel>().BuildPulleyWheel(startPosition, endPosition, 
             useDefaultDistanceBelowRopeForWheels, distanceBelowRopeToSpawnWheels, minSeparationBetweenWheels, 
-            ropeAngle, ropeDirection, distanceFromEnds);
+            ropeAngle, ropeDirection, distanceFromEnds, minWheels, maxWheels, pulleyWheelOptions);
     }
 
     #endregion
