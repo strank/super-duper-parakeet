@@ -2,28 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScenarioManager : MonoBehaviour {
+public abstract class ScenarioManager : MonoBehaviour {
 
     #region Variables
     public Vector3 centralLocation;
+    private GameObject creationManager;
 
     #endregion
 
     #region Methods
 
-    #region Initialization
-
     private void Awake()
     {
-        // Determine Create classes needed
-        // Pass parameterization data on to create classes
-        // Instantiate objects created by Create classes
-        // Activate everything within instantiated objects (to control timing of internal HFFWS scripts)
+        // Ensures every object inheriting from ScenarioManager has a reference to the 
+        // creationManager gameObject that holds all the Create classes
+        creationManager = DemoManager.creationManager;
     }
 
-    #endregion
+    public abstract void BuildScenario();
 
-    
 
     #endregion
 }
