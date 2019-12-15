@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HumanAPI;
 
-public class CreateRope : MonoBehaviour {
+public class CreateRope : Create {
 
     #region Variables
     private Vector3 minStart;
@@ -67,12 +67,12 @@ public class CreateRope : MonoBehaviour {
     #endregion
 
     #region Unity Methods
-    
+
     /*
      * Public method to allow outside classes to use this class to build a rope
      */
     public void BuildRope(Vector3 _minStart, Vector3 _maxStart, float _minLength, float _maxLength, 
-        GameObject[] _startPulleyMassOptions, GameObject[] _endPulleyMassOptions)
+        GameObject[] _startPulleyMassOptions, GameObject[] _endPulleyMassOptions, GameObject parent)
     {
         minStart = _minStart;
         maxStart = _maxStart;
@@ -80,6 +80,8 @@ public class CreateRope : MonoBehaviour {
         maxLength = _maxLength;
         startPulleyMassOptions = _startPulleyMassOptions;
         endPulleyMassOptions = _endPulleyMassOptions;
+
+        scenarioParent = parent.transform;
 
         RandomizeStartPosition();
         DetermineLength();
@@ -141,7 +143,7 @@ public class CreateRope : MonoBehaviour {
         GameObject firstObject = null;
         GameObject secondObject = null;
 
-        GameObject quickPulley = (GameObject)Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
+        GameObject quickPulley = (GameObject)Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity, scenarioParent);
         PulleySetup pulleySetup = quickPulley.GetComponent<PulleySetup>();
         Rope pulleyRope = pulleySetup.rope;
 
@@ -193,36 +195,5 @@ public class CreateRope : MonoBehaviour {
 
     }
 
-    //private void Start()
-    //{
-
-    //    CreateObjects();
-
-    //    SetRopeParameters();
-    //}
-
-    //private void CreateObjects()
-    //{
-    //    generatedRope = (GameObject)Instantiate(ropePrefab, ropePosition.position, Quaternion.identity);
-    //    rope = generatedRope.GetComponent<PulleySetup>().rope;
-
-
-    //    Vector3 startObjectPosition = ropeStart.position - new Vector3(offsetX, 0.0f, 0.0f);
-    //    Vector3 endObjectPosition = ropeEnd.position + new Vector3(offsetX, 0.0f, 0.0f);
-
-    //    startObject = (GameObject)Instantiate(startPrefab, startObjectPosition, Quaternion.identity, generatedRope.transform);
-    //    endObject = (GameObject)Instantiate(endPrefab, endObjectPosition, Quaternion.identity, generatedRope.transform);
-    //}
-
-    //private void SetRopeParameters()
-    //{
-    //    rope.handles[0] = ropeStart;
-    //    rope.handles[1] = ropeEnd;
-
-    //    rope.startBody = startObject.GetComponent<Rigidbody>();
-    //    rope.endBody = endObject.GetComponent<Rigidbody>();
-
-    //    rope.gameObject.SetActive(true);
-    //}
     #endregion
 }

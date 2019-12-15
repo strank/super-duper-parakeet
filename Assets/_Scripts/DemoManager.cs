@@ -57,6 +57,13 @@ public class DemoManager : MonoBehaviour {
     [SerializeField] private int numberOfScenariosToGenerate = 1;
     [SerializeField] private float spacingBetweenScenarios = 10.0f;
 
+    public GameObject ScenarioParent
+    {
+        get { return scenarioParent; }
+    }
+    private GameObject scenarioParent;
+
+
     // Manager References
     public GameObject creationManager;
     public GameObject scenarioManager;
@@ -66,17 +73,15 @@ public class DemoManager : MonoBehaviour {
 
     #region Unity Methods
 
-    private void Awake()
+    private void Start()
     {
         if (creationManager == null)
         {
             Debug.LogWarning("Demo Manager has no Creation Manager reference.");
         }
 
-        //DebugPossibleScenariosArray(pulleyScenarios);
-
         if (generateSpecificScenario)
-            SpecificScenario();
+            DetermineSpecificScenario();
         else
         {
             if (usePulleyScenarios)
@@ -96,7 +101,7 @@ public class DemoManager : MonoBehaviour {
     /*
      * Directly determine a single scenario type to generate.
      */
-    private void SpecificScenario()
+    private void DetermineSpecificScenario()
     {
         switch (puzzleType)
         {
@@ -110,7 +115,8 @@ public class DemoManager : MonoBehaviour {
                         Debug.Log("Not in yet");
                         break;
                     case PulleyType.HeavyDoor:
-                        scenarioManager.GetComponent<HeavyDoorPulleyScenario>().BuildScenario();
+                        //scenarioManager.GetComponent<HeavyDoorPulleyScenario>().BuildScenario();
+                        BuildSpecificScenario<HeavyDoorPulleyScenario>();
                         break;
                     case PulleyType.Platform:
                         Debug.Log("Not in yet");
@@ -123,6 +129,23 @@ public class DemoManager : MonoBehaviour {
             default:
                 Debug.LogWarning("This puzzle type does not exist!");
                 break;
+        }
+    }
+
+    /*
+     * Helps perform steps for building any specific scenario
+     */
+    private void BuildSpecificScenario<T>() where T : ScenarioManager
+    {
+        for (int i = 0; i < numberOfScenariosToGenerate; i++)
+        {
+            scenarioParent = new GameObject();
+            scenarioParent.name = "ScenarioSpecific" + i;
+            scenarioParent.transform.position = new Vector3(spacingBetweenScenarios * i, 0, 0);
+
+            ScenarioManager currentScenario = scenarioManager.GetComponent<T>();
+            currentScenario.GetScenarioParent(scenarioParent);
+            currentScenario.BuildScenario();
         }
     }
 
@@ -159,14 +182,6 @@ public class DemoManager : MonoBehaviour {
         else
             Debug.Log("scenariosToAdd is empty.");
         
-    }
-
-    private void DebugPossibleScenariosArray(ScenarioManager[] array)
-    {
-        foreach (ScenarioManager scenario in array)
-        {
-            Debug.Log("Current scenarios in: " + array + " are the following " + scenario.name);
-        }
     }
 
     #endregion

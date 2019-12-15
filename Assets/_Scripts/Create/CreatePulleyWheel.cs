@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreatePulleyWheel : MonoBehaviour {
+public class CreatePulleyWheel : Create {
 
     #region Variables
     // Received from Scenario class
@@ -36,7 +36,7 @@ public class CreatePulleyWheel : MonoBehaviour {
 
     public void BuildPulleyWheel(Vector3 _startPosition, Vector3 _endPosition, bool _useDefaultDistanceBelowRopeForWheels, 
         float _distanceBelowRopeToSpawnWheels, float _minSeparationBetweenWheels, float _ropeAngle, Vector3 _ropeDirection, 
-        float _distanceFromEnds, int _minWheels, int _maxWheels, GameObject[] _pulleyWheelOptions)
+        float _distanceFromEnds, int _minWheels, int _maxWheels, GameObject[] _pulleyWheelOptions, GameObject parent)
     {
         startPosition = _startPosition;
         endPosition = _endPosition;
@@ -49,6 +49,8 @@ public class CreatePulleyWheel : MonoBehaviour {
         minWheels = _minWheels;
         maxWheels = _maxWheels;
         pulleyWheelOptions = _pulleyWheelOptions;
+
+        scenarioParent = parent.transform;
 
         PositionWheels();
         GenerateWheels();
@@ -231,7 +233,7 @@ public class CreatePulleyWheel : MonoBehaviour {
         {
             int randomWheelIndex = Random.Range(0, pulleyWheelOptions.Length);
             GameObject pulleyWheel = pulleyWheelOptions[randomWheelIndex];
-            Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f));
+            Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f), scenarioParent);
         }
     }
 
