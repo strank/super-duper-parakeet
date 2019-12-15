@@ -696,7 +696,7 @@ MonoBehaviour:
   usePulleyScenarios: 0
   useSeesawScenarios: 0
   useSwingingPlatformScenarios: 0
-  numberOfScenariosToGenerate: 1
+  numberOfScenariosToGenerate: 3
   spacingBetweenScenarios: 10
   creationManager: {fileID: 1330186150}
   scenarioManager: {fileID: 1346344122}
