@@ -116,7 +116,7 @@ public class DemoManager : MonoBehaviour {
                         break;
                     case PulleyType.HeavyDoor:
                         //scenarioManager.GetComponent<HeavyDoorPulleyScenario>().BuildScenario();
-                        BuildSpecificScenario<HeavyDoorPulleyScenario>();
+                        BuildSpecificScenario<PulleyHeavyDoorScenario>();
                         break;
                     case PulleyType.Platform:
                         Debug.Log("Not in yet");
