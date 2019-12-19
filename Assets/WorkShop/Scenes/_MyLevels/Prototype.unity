@@ -690,14 +690,14 @@ MonoBehaviour:
   puzzleType: 1
   pulleyType: 2
   pulleyScenarios:
-  - {fileID: 1346344126}
+  - {fileID: 0}
   seesawScenarios: []
   swingingPlatformScenarios: []
   usePulleyScenarios: 0
   useSeesawScenarios: 0
   useSwingingPlatformScenarios: 0
-  numberOfScenariosToGenerate: 3
-  spacingBetweenScenarios: 10
+  numberOfScenariosToGenerate: 5
+  spacingBetweenScenarios: 12
   creationManager: {fileID: 1330186150}
   scenarioManager: {fileID: 1346344122}
 --- !u!4 &882325314
@@ -913,7 +913,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1346344124}
-  - component: {fileID: 1346344126}
+  - component: {fileID: 1346344123}
   m_Layer: 0
   m_Name: ScenarioManager
   m_TagString: Untagged
@@ -921,6 +921,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1346344123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346344122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d55729ed9fa31046b10d2becdb0d161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centralLocation: {x: 0, y: 0, z: 0}
+  startPulleyMassOptions: []
+  endPulleyMassOptions: []
+  minLength: 2
+  maxLength: 12
+  minStart: {x: 0, y: 0, z: 0}
+  maxStart: {x: 20, y: 20, z: 20}
+  pulleyWheelOptions: []
+  minWheels: 1
+  maxWheels: 3
+  minSeparationBetweenWheels: 2
+  distanceFromEnds: 2
+  useDefaultDistanceBelowRopeForWheels: 1
+  distanceBelowRopeToSpawnWheels: 2
 --- !u!4 &1346344124
 Transform:
   m_ObjectHideFlags: 0
@@ -934,37 +959,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1346344126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346344122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9911f797cb59440b17fdb25214a8da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  centralLocation: {x: 0, y: 0, z: 0}
-  startPulleyMassOptions:
-  - {fileID: 1674972137037218, guid: 8abf9759423588a49a3d17adc939cc80, type: 2}
-  - {fileID: 1446958375739988, guid: ffcdbda553d709145b5ceb5067627300, type: 2}
-  endPulleyMassOptions:
-  - {fileID: 1295735708423260, guid: 2c7f08fc2975949409717aa144aed1db, type: 2}
-  - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
-  minLength: 10
-  maxLength: 20
-  minStart: {x: 5, y: 5, z: 5}
-  maxStart: {x: 12, y: 12, z: 12}
-  pulleyWheelOptions:
-  - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
-  - {fileID: 1242223216047440, guid: bd39b0416ab8a3b468a1f05b8ba81b7f, type: 2}
-  minWheels: 2
-  maxWheels: 3
-  minSeparationBetweenWheels: 2
-  distanceFromEnds: 2
-  useDefaultDistanceBelowRopeForWheels: 1
-  distanceBelowRopeToSpawnWheels: 2
 --- !u!1 &1387846741
 GameObject:
   m_ObjectHideFlags: 0
