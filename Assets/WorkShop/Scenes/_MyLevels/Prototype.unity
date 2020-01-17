@@ -688,7 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateSpecificScenario: 1
   puzzleType: 1
-  pulleyType: 2
+  pulleyType: 0
   pulleyScenarios:
   - {fileID: 0}
   seesawScenarios: []
@@ -914,6 +914,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1346344124}
   - component: {fileID: 1346344123}
+  - component: {fileID: 1346344126}
+  - component: {fileID: 1346344125}
   m_Layer: 0
   m_Name: ScenarioManager
   m_TagString: Untagged
@@ -933,13 +935,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centralLocation: {x: 0, y: 0, z: 0}
-  startPulleyMassOptions: []
-  endPulleyMassOptions: []
-  minLength: 2
-  maxLength: 12
+  startPulleyMassOptions:
+  - {fileID: 1446958375739988, guid: ffcdbda553d709145b5ceb5067627300, type: 2}
+  - {fileID: 1485185384672438, guid: cd4939d79afb6b542ae40a657325b45f, type: 2}
+  endPulleyMassOptions:
+  - {fileID: 1306717682303484, guid: 348b405b4e0f09644a405c2c6c5e1514, type: 2}
+  - {fileID: 1831816210978484, guid: 228f4c45d738dc74d85eaa35e9c217b8, type: 2}
+  minLength: 10
+  maxLength: 15
   minStart: {x: 0, y: 0, z: 0}
   maxStart: {x: 20, y: 20, z: 20}
-  pulleyWheelOptions: []
+  pulleyWheelOptions:
+  - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
   minWheels: 1
   maxWheels: 3
   minSeparationBetweenWheels: 2
@@ -959,6 +966,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346344125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346344122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52dd4e8e29cf99f43b3c3b76ec2214ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centralLocation: {x: 0, y: 0, z: 0}
+  startPulleyMassOptions:
+  - {fileID: 1004857926697890, guid: 61970ccaa9841a640841c91c6cdfb5c4, type: 2}
+  endPulleyMassOptions:
+  - {fileID: 1295735708423260, guid: 2c7f08fc2975949409717aa144aed1db, type: 2}
+  - {fileID: 1674972137037218, guid: 8abf9759423588a49a3d17adc939cc80, type: 2}
+  - {fileID: 1446958375739988, guid: ffcdbda553d709145b5ceb5067627300, type: 2}
+  - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
+  minLength: 10
+  maxLength: 15
+  minStart: {x: 0, y: 0, z: 0}
+  maxStart: {x: 20, y: 20, z: 20}
+  pulleyWheelOptions:
+  - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
+  minWheels: 1
+  maxWheels: 3
+  minSeparationBetweenWheels: 2
+  distanceFromEnds: 2
+  useDefaultDistanceBelowRopeForWheels: 1
+  distanceBelowRopeToSpawnWheels: 2
+--- !u!114 &1346344126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346344122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261fabd4e1ef3e141948efca8477f918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centralLocation: {x: 0, y: 0, z: 0}
+  startPulleyMassOptions:
+  - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
+  endPulleyMassOptions:
+  - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
+  - {fileID: 1485185384672438, guid: cd4939d79afb6b542ae40a657325b45f, type: 2}
+  - {fileID: 1446958375739988, guid: ffcdbda553d709145b5ceb5067627300, type: 2}
+  minLength: 10
+  maxLength: 15
+  minStart: {x: 0, y: 0, z: 0}
+  maxStart: {x: 20, y: 20, z: 20}
+  pulleyWheelOptions:
+  - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
+  minWheels: 2
+  maxWheels: 3
+  minSeparationBetweenWheels: 2
+  distanceFromEnds: 2
+  useDefaultDistanceBelowRopeForWheels: 1
+  distanceBelowRopeToSpawnWheels: 2
 --- !u!1 &1387846741
 GameObject:
   m_ObjectHideFlags: 0
