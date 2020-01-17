@@ -15,7 +15,7 @@ public class CreatePulleyWheel : Create {
     // Wheels
     private GameObject[] pulleyWheelOptions;
     private int minWheels;
-    private int maxWheels;
+    private int maxWheels; // Must not be too large that they do not fit on rope length options
 
     // Other
     private float minSeparationBetweenWheels = 2.0f;
@@ -33,7 +33,7 @@ public class CreatePulleyWheel : Create {
     #endregion
 
     #region Unity Methods
-
+    
     public void BuildPulleyWheel(Vector3 _startPosition, Vector3 _endPosition, bool _useDefaultDistanceBelowRopeForWheels, 
         float _distanceBelowRopeToSpawnWheels, float _minSeparationBetweenWheels, float _ropeAngle, Vector3 _ropeDirection, 
         float _distanceFromEnds, int _minWheels, int _maxWheels, GameObject[] _pulleyWheelOptions, GameObject parent)
@@ -119,11 +119,16 @@ public class CreatePulleyWheel : Create {
 
         for (int i = 0; i < numberOfWheels; i++)
         {
+            if (positionRanges.Count == 0)
+                Debug.LogError("Trying to create another wheel, but there is not enough room based on other parameters.");
+            
             // Need to pick a range from the list of ranges, and then randomly select a value within that range
             float rangePicker = Random.Range(0.0f, 1.0f);
             float weightCheck = 0.0f;
             WeightedRange selectedRange;
             int rangeCounter = 0;
+
+            Debug.Log("The total wheels is: " + numberOfWheels + " and this is wheel ID: " + i);
 
             while (weightCheck < rangePicker)
             {
@@ -232,6 +237,7 @@ public class CreatePulleyWheel : Create {
         foreach (Vector3 v in wheelPositions)
         {
             int randomWheelIndex = Random.Range(0, pulleyWheelOptions.Length);
+            Debug.Log("The random wheel index is: " + randomWheelIndex);
             GameObject pulleyWheel = pulleyWheelOptions[randomWheelIndex];
             Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f), scenarioParent);
         }
