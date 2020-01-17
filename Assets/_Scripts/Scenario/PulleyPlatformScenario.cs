@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PulleyPlatformScenario : MonoBehaviour {
+public class PulleyPlatformScenario : PulleyScenarioManager {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void BuildScenario()
+    {
+        CreateVariedRope();
+        CreatePulleyWheelSetup();
+    }
 }
