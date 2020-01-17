@@ -19,7 +19,7 @@ public abstract class ScenarioManager : MonoBehaviour {
         // creationManager gameObject that holds all the Create classes
         creationManager = DemoManager.Instance.creationManager;
     }
-
+    
     public void GetScenarioParent(GameObject parent)
     {
         scenarioParent = parent;

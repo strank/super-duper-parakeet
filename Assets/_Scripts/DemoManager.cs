@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HumanAPI;
 
 public enum PuzzleType
 {
@@ -112,14 +113,13 @@ public class DemoManager : MonoBehaviour {
                 switch (pulleyType)
                 {
                     case PulleyType.Hook:
-                        Debug.Log("Not in yet");
+                        BuildSpecificScenario<PulleyHookScenario>();
                         break;
                     case PulleyType.HeavyDoor:
-                        //scenarioManager.GetComponent<HeavyDoorPulleyScenario>().BuildScenario();
                         BuildSpecificScenario<PulleyHeavyDoorScenario>();
                         break;
                     case PulleyType.Platform:
-                        Debug.Log("Not in yet");
+                        BuildSpecificScenario<PulleyPlatformScenario>();
                         break;
                 }
                 break;
