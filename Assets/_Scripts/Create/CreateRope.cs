@@ -138,19 +138,23 @@ public class CreateRope : Create {
      */
     private void PlaceObjectsOnRopeEnds()
     {
-        Vector3 TESTPOSITION = new Vector3(0f, 10f, 0f);
+        Vector3 TESTPOSITION = new Vector3(0f, 3.0f, 0f);
         Vector3 OFFSET = new Vector3(0.5f, 0f, 0f);
         GameObject firstObject = null;
         GameObject secondObject = null;
 
-        GameObject quickPulley = (GameObject)Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity, scenarioParent);
+        GameObject quickPulley = (GameObject)Instantiate(pulleyPrefab, TESTPOSITION, Quaternion.identity);
+        //quickPulley.transform.localPosition = TESTPOSITION;
+        quickPulley.transform.SetParent(scenarioParent.transform, false);
         PulleySetup pulleySetup = quickPulley.GetComponent<PulleySetup>();
         Rope pulleyRope = pulleySetup.rope;
 
         // Moves the internal pulley prefab empty gameobject transforms to the proper position.
         // Needed to hold useful positional data as well as provide transform data for rope handles
-        pulleySetup.ropeStart.transform.position = startPosition;
-        pulleySetup.ropeEnd.transform.position = endPosition;
+        //pulleySetup.ropeStart.transform.position = startPosition;
+        //pulleySetup.ropeEnd.transform.position = endPosition;
+        pulleySetup.ropeStart.transform.localPosition = startPosition;
+        pulleySetup.ropeEnd.transform.localPosition = endPosition;
         Debug.Log("Rope start transform position moved to : " + startPosition);
         Debug.Log("Rope end transform position moved to : " + endPosition);
 
@@ -160,12 +164,14 @@ public class CreateRope : Create {
         if (startPulleyMassOptions.Length > 0)
         {
             GameObject startPulleyMass = startPulleyMassOptions[Random.Range(0, startPulleyMassOptions.Length)];
-            firstObject = (GameObject)Instantiate(startPulleyMass, firstObjectPosition, Quaternion.identity, quickPulley.transform);
+            firstObject = (GameObject)Instantiate(startPulleyMass, firstObjectPosition, Quaternion.identity);
+            firstObject.transform.SetParent(quickPulley.transform, false);
         }
         if (endPulleyMassOptions.Length > 0)
         {
             GameObject endPulleyMass = endPulleyMassOptions[Random.Range(0, endPulleyMassOptions.Length)];
-            secondObject = (GameObject)Instantiate(endPulleyMass, secondObjectPosition, Quaternion.identity, quickPulley.transform);
+            secondObject = (GameObject)Instantiate(endPulleyMass, secondObjectPosition, Quaternion.identity);
+            secondObject.transform.SetParent(quickPulley.transform, false);
         }
 
         SetRopeParameters(pulleyRope, pulleySetup.ropeStart.transform, pulleySetup.ropeEnd.transform, firstObject, secondObject);

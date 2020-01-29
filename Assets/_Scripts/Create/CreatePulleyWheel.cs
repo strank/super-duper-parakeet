@@ -239,7 +239,8 @@ public class CreatePulleyWheel : Create {
             int randomWheelIndex = Random.Range(0, pulleyWheelOptions.Length);
             Debug.Log("The random wheel index is: " + randomWheelIndex);
             GameObject pulleyWheel = pulleyWheelOptions[randomWheelIndex];
-            Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f), scenarioParent);
+            GameObject generatedWheel = (GameObject)Instantiate(pulleyWheel, v, Quaternion.Euler(0f, ropeAngle, 0f));
+            generatedWheel.transform.SetParent(scenarioParent.transform, false);
         }
     }
 
