@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 75499868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 70}
+  m_LocalScale: {x: 200, y: 1, z: 70}
   m_Children: []
   m_Father: {fileID: 401353688}
   m_RootOrder: 5
@@ -941,14 +941,15 @@ MonoBehaviour:
   endPulleyMassOptions:
   - {fileID: 1306717682303484, guid: 348b405b4e0f09644a405c2c6c5e1514, type: 2}
   - {fileID: 1831816210978484, guid: 228f4c45d738dc74d85eaa35e9c217b8, type: 2}
-  minLength: 10
-  maxLength: 15
-  minStart: {x: 0, y: 0, z: 0}
-  maxStart: {x: 20, y: 20, z: 20}
+  minLength: 8
+  maxLength: 12
+  minStart: {x: 0, y: 10, z: 0}
+  maxStart: {x: 5, y: 20, z: 5}
   pulleyWheelOptions:
   - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
+  - {fileID: 1242223216047440, guid: bd39b0416ab8a3b468a1f05b8ba81b7f, type: 2}
   minWheels: 1
-  maxWheels: 3
+  maxWheels: 1
   minSeparationBetweenWheels: 2
   distanceFromEnds: 2
   useDefaultDistanceBelowRopeForWheels: 1
@@ -987,8 +988,8 @@ MonoBehaviour:
   - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
   minLength: 10
   maxLength: 15
-  minStart: {x: 0, y: 0, z: 0}
-  maxStart: {x: 20, y: 20, z: 20}
+  minStart: {x: 0, y: 10, z: 0}
+  maxStart: {x: 5, y: 20, z: 5}
   pulleyWheelOptions:
   - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
   minWheels: 1
@@ -1015,14 +1016,14 @@ MonoBehaviour:
   - {fileID: 1871821721822962, guid: 1faaffcc8baaa4845a3619694225583f, type: 2}
   - {fileID: 1485185384672438, guid: cd4939d79afb6b542ae40a657325b45f, type: 2}
   - {fileID: 1446958375739988, guid: ffcdbda553d709145b5ceb5067627300, type: 2}
-  minLength: 10
-  maxLength: 15
-  minStart: {x: 0, y: 0, z: 0}
-  maxStart: {x: 20, y: 20, z: 20}
+  minLength: 8
+  maxLength: 10
+  minStart: {x: 0, y: 4, z: 0}
+  maxStart: {x: 3, y: 8, z: 3}
   pulleyWheelOptions:
-  - {fileID: 1660937740648790, guid: 29f5b0e98e4b1804096c48c245d8497a, type: 2}
-  minWheels: 2
-  maxWheels: 3
+  - {fileID: 1242223216047440, guid: bd39b0416ab8a3b468a1f05b8ba81b7f, type: 2}
+  minWheels: 1
+  maxWheels: 1
   minSeparationBetweenWheels: 2
   distanceFromEnds: 2
   useDefaultDistanceBelowRopeForWheels: 1
@@ -1049,7 +1050,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1387846741}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5761719, y: 4.8720703, z: -12.104492}
+  m_LocalPosition: {x: 2.5761719, y: 4.8720703, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 799322488}
