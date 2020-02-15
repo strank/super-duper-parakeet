@@ -8,6 +8,8 @@ public abstract class ScenarioManager : MonoBehaviour {
     public Vector3 centralLocation;
     protected GameObject creationManager;
     protected GameObject scenarioParent;
+    //protected string seed;
+    protected System.Random seededValue;
 
     #endregion
 
@@ -23,6 +25,16 @@ public abstract class ScenarioManager : MonoBehaviour {
     public void GetScenarioParent(GameObject parent)
     {
         scenarioParent = parent;
+    }
+
+    //public void GetSeed(string demoSeed)
+    //{
+    //    seed = demoSeed;
+    //}
+
+    public void GetSeededRandomValue(System.Random psuedoRandom)
+    {
+        seededValue = psuedoRandom;
     }
 
     public abstract void BuildScenario();

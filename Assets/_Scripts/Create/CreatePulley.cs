@@ -58,6 +58,9 @@ public class CreatePulley : MonoBehaviour {
     private int numberOfTests;
     private float separationDistance;
 
+    // Used for tracking random seed value
+    private System.Random seedValue;
+
     // Trying new singleton pattern within the property itself
     private static CreatePulley _instance;
 
@@ -123,8 +126,8 @@ public class CreatePulley : MonoBehaviour {
      */
     private void RandomizeStartPosition()
     {
-        startPosition = RandomGeneration.RandomVector3WithinBounds(minStart, maxStart);
-        Debug.Log("Randomzied pulley start position is: " + startPosition);
+        startPosition = RandomGeneration.RandomVector3WithinBounds(minStart, maxStart, seedValue);
+        Debug.Log("SEEDED: Randomzied pulley start position is: " + startPosition);
     }
 
     /*

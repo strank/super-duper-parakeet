@@ -57,12 +57,24 @@ public class DemoManager : MonoBehaviour {
 
     [SerializeField] private int numberOfScenariosToGenerate = 1;
     [SerializeField] private float spacingBetweenScenarios = 10.0f;
-
+    
     public GameObject ScenarioParent
     {
         get { return scenarioParent; }
     }
     private GameObject scenarioParent;
+
+    public string Seed
+    {
+        get { return seed; }
+    }
+    [SerializeField] private string seed;
+
+    public System.Random PsuedoRandom
+    {
+        get { return psuedoRandom; }
+    }
+    private System.Random psuedoRandom;
 
 
     // Manager References
@@ -73,6 +85,10 @@ public class DemoManager : MonoBehaviour {
 
 
     #region Unity Methods
+    private void Awake()
+    {
+        psuedoRandom = new System.Random(seed.GetHashCode());
+    }
 
     private void Start()
     {
@@ -145,6 +161,8 @@ public class DemoManager : MonoBehaviour {
 
             ScenarioManager currentScenario = scenarioManager.GetComponent<T>();
             currentScenario.GetScenarioParent(scenarioParent);
+            //currentScenario.GetSeed(seed);
+            currentScenario.GetSeededRandomValue(psuedoRandom);
             currentScenario.BuildScenario();
         }
     }

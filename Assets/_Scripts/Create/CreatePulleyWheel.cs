@@ -22,6 +22,7 @@ public class CreatePulleyWheel : Create {
     private float distanceFromEnds = 2.0f;
     private bool useDefaultDistanceBelowRopeForWheels = true;
     private float distanceBelowRopeToSpawnWheels = 2.0f;
+    private System.Random seedValue;
 
     // Determined within class itself
     private int numberOfWheels;
@@ -36,7 +37,8 @@ public class CreatePulleyWheel : Create {
     
     public void BuildPulleyWheel(Vector3 _startPosition, Vector3 _endPosition, bool _useDefaultDistanceBelowRopeForWheels, 
         float _distanceBelowRopeToSpawnWheels, float _minSeparationBetweenWheels, float _ropeAngle, Vector3 _ropeDirection, 
-        float _distanceFromEnds, int _minWheels, int _maxWheels, GameObject[] _pulleyWheelOptions, GameObject parent)
+        float _distanceFromEnds, int _minWheels, int _maxWheels, GameObject[] _pulleyWheelOptions, GameObject parent, 
+        System.Random _seedValue)
     {
         startPosition = _startPosition;
         endPosition = _endPosition;
@@ -51,6 +53,7 @@ public class CreatePulleyWheel : Create {
         pulleyWheelOptions = _pulleyWheelOptions;
 
         scenarioParent = parent.transform;
+        seedValue = _seedValue;
 
         PositionWheels();
         GenerateWheels();

@@ -49,6 +49,8 @@ public class CreateRope : Create {
     // Always set for this Create class
     public GameObject pulleyPrefab;
 
+    private System.Random seedValue;
+
     // Important Rope variables
     /*
      * 2x Handle Positions
@@ -72,7 +74,7 @@ public class CreateRope : Create {
      * Public method to allow outside classes to use this class to build a rope
      */
     public void BuildRope(Vector3 _minStart, Vector3 _maxStart, float _minLength, float _maxLength, 
-        GameObject[] _startPulleyMassOptions, GameObject[] _endPulleyMassOptions, GameObject parent)
+        GameObject[] _startPulleyMassOptions, GameObject[] _endPulleyMassOptions, GameObject parent, System.Random _seedValue)
     {
         minStart = _minStart;
         maxStart = _maxStart;
@@ -82,6 +84,7 @@ public class CreateRope : Create {
         endPulleyMassOptions = _endPulleyMassOptions;
 
         scenarioParent = parent.transform;
+        seedValue = _seedValue;
 
         RandomizeStartPosition();
         DetermineLength();
@@ -94,8 +97,8 @@ public class CreateRope : Create {
      */
     private void RandomizeStartPosition()
     {
-        startPosition = RandomGeneration.RandomVector3WithinBounds(minStart, maxStart);
-        Debug.Log("Randomzied pulley start position is: " + startPosition);
+        startPosition = RandomGeneration.RandomVector3WithinBounds(minStart, maxStart, seedValue);
+        Debug.Log("SEEDED: Randomzied pulley start position is: " + startPosition);
     }
 
     /*

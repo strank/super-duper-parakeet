@@ -10,13 +10,27 @@ public class RandomGeneration {
      * bounding parameters.
      * The bounding cubes dimensions would be (max.x - min.x, max.y - min.y, max.z - min.z)
      */
-    public static Vector3 RandomVector3WithinBounds(Vector3 min, Vector3 max)
+    public static Vector3 RandomVector3WithinBounds(Vector3 min, Vector3 max, System.Random seedValue)
     {
+        //Vector3 determinedVector = new Vector3(
+        //    Random.Range(min.x, max.x),
+        //    Random.Range(min.y, max.y),
+        //    Random.Range(min.z, max.z));
+
         Vector3 determinedVector = new Vector3(
-            Random.Range(min.x, max.x),
-            Random.Range(min.y, max.y),
-            Random.Range(min.z, max.z));
+            CalculateRandomFloatRange(min.x, max.x, seedValue),
+            CalculateRandomFloatRange(min.y, max.y, seedValue),
+            CalculateRandomFloatRange(min.z, max.z, seedValue));
 
         return determinedVector;
+    }
+
+    /*
+     * Calculation to use the 0.0 to 1.0 range from System.Random.NextDouble() to select a value between 
+     * a designated min and max value.
+     */
+    private static float CalculateRandomFloatRange(float minValue, float maxValue, System.Random seedValue)
+    {
+        return minValue + (float)seedValue.NextDouble() * (maxValue - minValue);
     }
 }

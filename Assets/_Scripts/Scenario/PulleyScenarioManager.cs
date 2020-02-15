@@ -63,7 +63,7 @@ public abstract class PulleyScenarioManager : ScenarioManager
     {
         CreateRope rope = creationManager.GetComponent<CreateRope>();
 
-        rope.BuildRope(minStart, maxStart, minLength, maxLength, startPulleyMassOptions, endPulleyMassOptions, scenarioParent);
+        rope.BuildRope(minStart, maxStart, minLength, maxLength, startPulleyMassOptions, endPulleyMassOptions, scenarioParent, seededValue);
 
         // Allows CreateRope to calculate these first, and then bring the values back here to use in CreatePulleyWheelSetup
         ropeAngle = rope.RopeAngle;
@@ -80,7 +80,8 @@ public abstract class PulleyScenarioManager : ScenarioManager
     {
         creationManager.GetComponent<CreatePulleyWheel>().BuildPulleyWheel(startPosition, endPosition, 
             useDefaultDistanceBelowRopeForWheels, distanceBelowRopeToSpawnWheels, minSeparationBetweenWheels, 
-            ropeAngle, ropeDirection, distanceFromEnds, minWheels, maxWheels, pulleyWheelOptions, scenarioParent);
+            ropeAngle, ropeDirection, distanceFromEnds, minWheels, maxWheels, pulleyWheelOptions, scenarioParent, 
+            seededValue);
     }
 
     #endregion
