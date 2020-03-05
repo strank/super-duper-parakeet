@@ -687,8 +687,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateSpecificScenario: 1
-  puzzleType: 1
+  puzzleType: 2
   pulleyType: 0
+  rampType: 0
+  leverType: 0
   pulleyScenarios:
   - {fileID: 0}
   seesawScenarios: []
@@ -696,9 +698,9 @@ MonoBehaviour:
   usePulleyScenarios: 0
   useSeesawScenarios: 0
   useSwingingPlatformScenarios: 0
-  numberOfScenariosToGenerate: 1
+  numberOfScenariosToGenerate: 5
   spacingBetweenScenarios: 12
-  seed: Turtle
+  seed: Tiger
   creationManager: {fileID: 1330186150}
   scenarioManager: {fileID: 1346344122}
 --- !u!4 &882325314
@@ -795,6 +797,9 @@ GameObject:
   - component: {fileID: 1330186155}
   - component: {fileID: 1330186156}
   - component: {fileID: 1330186153}
+  - component: {fileID: 1330186159}
+  - component: {fileID: 1330186158}
+  - component: {fileID: 1330186157}
   m_Layer: 0
   m_Name: CreationManager
   m_TagString: Untagged
@@ -906,6 +911,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulleyPrefab: {fileID: 1099401154764832, guid: 90512f94f3a14ab42b49e2a9120d6642,
     type: 2}
+--- !u!114 &1330186157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330186150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3a5816fa2999143b94b9bbd37469b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1782437532145070, guid: 8994858d4b267634d82973572f5a00c2,
+    type: 2}
+--- !u!114 &1330186158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330186150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ea3a5b863def24ba77cb5195f5740e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seesawPrefab: {fileID: 1745546953413786, guid: 6c27ce81ee9092b42a1138da9a3fa918,
+    type: 2}
+--- !u!114 &1330186159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330186150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdb8365818d6fb4e89dbd0c7daa53d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rampPrefab: {fileID: 1034318844679372, guid: de0c6764ea4decb41931a99e809fe13a, type: 2}
 --- !u!1 &1346344122
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +960,8 @@ GameObject:
   - component: {fileID: 1346344123}
   - component: {fileID: 1346344126}
   - component: {fileID: 1346344125}
+  - component: {fileID: 1346344128}
+  - component: {fileID: 1346344127}
   m_Layer: 0
   m_Name: ScenarioManager
   m_TagString: Untagged
@@ -1029,6 +1074,46 @@ MonoBehaviour:
   distanceFromEnds: 2
   useDefaultDistanceBelowRopeForWheels: 1
   distanceBelowRopeToSpawnWheels: 2
+--- !u!114 &1346344127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346344122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1a19d5e1436744ba4baa11baef11e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centralLocation: {x: 0, y: 0, z: 0}
+  minLength: 0.1
+  maxLength: 0.5
+  minWidth: 0.1
+  maxWidth: 0.5
+  minHeight: 0.1
+  maxHeight: 0.5
+  minStart: {x: 0, y: 0, z: 0}
+  maxStart: {x: 1, y: 1, z: 1}
+--- !u!114 &1346344128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346344122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b69dbe39b4b1e542bdf52cdd28f61a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centralLocation: {x: 0, y: 0, z: 0}
+  minLength: 2
+  maxLength: 6
+  minWidth: 2
+  maxWidth: 4
+  minHeight: 2
+  maxHeight: 6
+  minStart: {x: 0, y: 0, z: 0}
+  maxStart: {x: 3, y: 3, z: 3}
 --- !u!1 &1387846741
 GameObject:
   m_ObjectHideFlags: 0
