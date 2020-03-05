@@ -9,7 +9,7 @@ public abstract class ScenarioManager : MonoBehaviour {
     protected GameObject creationManager;
     protected GameObject scenarioParent;
     //protected string seed;
-    protected System.Random seededValue;
+    protected System.Random rng;
 
     #endregion
 
@@ -34,7 +34,7 @@ public abstract class ScenarioManager : MonoBehaviour {
 
     public void GetSeededRandomValue(System.Random psuedoRandom)
     {
-        seededValue = psuedoRandom;
+        rng = psuedoRandom;
     }
 
     public abstract void BuildScenario();

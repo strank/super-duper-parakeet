@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HumanAPI;
 
-public abstract class PulleyScenarioManager : ScenarioManager
-{
+public abstract class PulleyScenarioManager : ScenarioManager {
     // Will contain any information that all Pulley Scenarios will use
 
     #region Variables
@@ -63,7 +62,7 @@ public abstract class PulleyScenarioManager : ScenarioManager
     {
         CreateRope rope = creationManager.GetComponent<CreateRope>();
 
-        rope.BuildRope(minStart, maxStart, minLength, maxLength, startPulleyMassOptions, endPulleyMassOptions, scenarioParent, seededValue);
+        rope.BuildRope(minStart, maxStart, minLength, maxLength, startPulleyMassOptions, endPulleyMassOptions, scenarioParent, rng);
 
         // Allows CreateRope to calculate these first, and then bring the values back here to use in CreatePulleyWheelSetup
         ropeAngle = rope.RopeAngle;
@@ -81,7 +80,7 @@ public abstract class PulleyScenarioManager : ScenarioManager
         creationManager.GetComponent<CreatePulleyWheel>().BuildPulleyWheel(startPosition, endPosition, 
             useDefaultDistanceBelowRopeForWheels, distanceBelowRopeToSpawnWheels, minSeparationBetweenWheels, 
             ropeAngle, ropeDirection, distanceFromEnds, minWheels, maxWheels, pulleyWheelOptions, scenarioParent, 
-            seededValue);
+            rng);
     }
 
     #endregion
