@@ -5,9 +5,9 @@ using HumanAPI;
 
 public enum PuzzleType
 {
-    Seesaw,
+    Lever,
     Pulley,
-    SwingPlatform
+    Ramp
 }
 
 public enum PulleyType
@@ -122,8 +122,8 @@ public class DemoManager : MonoBehaviour {
     {
         switch (puzzleType)
         {
-            case PuzzleType.Seesaw:
-                Debug.Log("Needs seesaw types");
+            case PuzzleType.Lever:
+                Debug.Log("Needs lever types");
                 break;
             case PuzzleType.Pulley:
                 switch (pulleyType)
@@ -139,8 +139,8 @@ public class DemoManager : MonoBehaviour {
                         break;
                 }
                 break;
-            case PuzzleType.SwingPlatform:
-                Debug.Log("Needs swing platform types");
+            case PuzzleType.Ramp:
+                Debug.Log("Needs ramp types");
                 break;
             default:
                 Debug.LogWarning("This puzzle type does not exist!");
