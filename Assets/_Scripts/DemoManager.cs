@@ -17,6 +17,19 @@ public enum PulleyType
     HeavyDoor
 }
 
+public enum RampType
+{
+    Basic, 
+    Build
+}
+
+public enum LeverType
+{
+    One, 
+    Two, 
+    Three
+}
+
 public class DemoManager : MonoBehaviour {
 
     #region Variables
@@ -46,6 +59,8 @@ public class DemoManager : MonoBehaviour {
     [SerializeField] private bool generateSpecificScenario = false;
     public PuzzleType puzzleType;
     public PulleyType pulleyType;
+    public RampType rampType;
+    public LeverType leverType;
 
     [SerializeField] private ScenarioManager[] pulleyScenarios;
     [SerializeField] private ScenarioManager[] seesawScenarios;
@@ -123,7 +138,21 @@ public class DemoManager : MonoBehaviour {
         switch (puzzleType)
         {
             case PuzzleType.Lever:
-                Debug.Log("Needs lever types");
+                switch (leverType)
+                {
+                    case LeverType.One:
+                        BuildSpecificScenario<LeverOneScenario>();
+                        break;
+                    case LeverType.Two:
+                        Debug.Log("LeverType Two not implemented yet.");
+                        break;
+                    case LeverType.Three:
+                        Debug.Log("LeverType Three not implemented yet.");
+                        break;
+                    default:
+                        Debug.Log("Incorrect lever type was selected in DemoManager.");
+                        break;
+                }
                 break;
             case PuzzleType.Pulley:
                 switch (pulleyType)
@@ -137,10 +166,24 @@ public class DemoManager : MonoBehaviour {
                     case PulleyType.Platform:
                         BuildSpecificScenario<PulleyPlatformScenario>();
                         break;
+                    default:
+                        Debug.Log("Incorrect pulley type was selected in DemoManager.");
+                        break;
                 }
                 break;
             case PuzzleType.Ramp:
-                Debug.Log("Needs ramp types");
+                switch (rampType)
+                {
+                    case RampType.Basic:
+                        BuildSpecificScenario<RampBasicScenario>();
+                        break;
+                    case RampType.Build:
+                        Debug.Log("RampBuild type not implemented yet.");
+                        break;
+                    default:
+                        Debug.Log("Incorrect ramp type was selected in DemoManager.");
+                        break;
+                }
                 break;
             default:
                 Debug.LogWarning("This puzzle type does not exist!");
