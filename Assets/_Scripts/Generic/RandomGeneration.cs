@@ -29,7 +29,7 @@ public class RandomGeneration {
      * Calculation to use the 0.0 to 1.0 range from System.Random.NextDouble() to select a value between 
      * a designated min and max value.
      */
-    private static float CalculateRandomFloatRange(float minValue, float maxValue, System.Random seedValue)
+    public static float CalculateRandomFloatRange(float minValue, float maxValue, System.Random seedValue)
     {
         return minValue + (float)seedValue.NextDouble() * (maxValue - minValue);
     }
