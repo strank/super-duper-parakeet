@@ -83,10 +83,10 @@ public class CreateRamp : Create {
         GameObject generatedRamp = (GameObject)Instantiate(rampPrefab);
 
         // Creates a scaling vector for all the dimensions of the ramp and applies it to its localScale
-        Vector3 rampScalingFactor = new Vector3(
-            RandomGeneration.CalculateRandomFloatRange(minLength, maxLength, seedValue),
-            RandomGeneration.CalculateRandomFloatRange(minHeight, maxHeight, seedValue),
-            RandomGeneration.CalculateRandomFloatRange(minWidth, maxWidth, seedValue));
+        length = RandomGeneration.CalculateRandomFloatRange(minLength, maxLength, seedValue);
+        height = RandomGeneration.CalculateRandomFloatRange(minHeight, maxHeight, seedValue);
+        width = RandomGeneration.CalculateRandomFloatRange(minWidth, maxWidth, seedValue);
+        Vector3 rampScalingFactor = new Vector3(length, height, width);
         generatedRamp.transform.localScale = rampScalingFactor;
 
         // Positions ramp within its scenario and sets it as child of overall scenario gameObject

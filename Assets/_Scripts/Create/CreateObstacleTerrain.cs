@@ -16,6 +16,12 @@ public class CreateObstacleTerrain : Create {
     private float maxHeight;
 
     // Determined within this Create class
+    private GameObject generatedObstacle;
+    public GameObject GeneratedObstacle
+    {
+        get { return generatedObstacle; }
+    }
+
     private Vector3 startPosition;
     public Vector3 StartPosition
     {
@@ -80,13 +86,18 @@ public class CreateObstacleTerrain : Create {
     public void GenerateObstacle()
     {
         // Instantiates a new gameObject instance of the seesawPrefab
-        GameObject generatedObstacle = (GameObject)Instantiate(obstaclePrefab);
+        //GameObject generatedObstacle = (GameObject)Instantiate(obstaclePrefab);
+        generatedObstacle = (GameObject)Instantiate(obstaclePrefab);
 
         // Creates a scaling vector for all the dimensions of the seesaw and applies it to its localScale
-        Vector3 obstacleScalingFactor = new Vector3(
-            RandomGeneration.CalculateRandomFloatRange(minLength, maxLength, seedValue),
-            RandomGeneration.CalculateRandomFloatRange(minHeight, maxHeight, seedValue),
-            RandomGeneration.CalculateRandomFloatRange(minWidth, maxWidth, seedValue));
+        length = RandomGeneration.CalculateRandomFloatRange(minLength, maxLength, seedValue);
+        height = RandomGeneration.CalculateRandomFloatRange(minHeight, maxHeight, seedValue);
+        width = RandomGeneration.CalculateRandomFloatRange(minWidth, maxWidth, seedValue);
+        //Vector3 obstacleScalingFactor = new Vector3(
+        //    RandomGeneration.CalculateRandomFloatRange(minLength, maxLength, seedValue),
+        //    RandomGeneration.CalculateRandomFloatRange(minHeight, maxHeight, seedValue),
+        //    RandomGeneration.CalculateRandomFloatRange(minWidth, maxWidth, seedValue));
+        Vector3 obstacleScalingFactor = new Vector3(length, height, width);
         generatedObstacle.transform.localScale = obstacleScalingFactor;
 
         // Positions seesaw within its scenario and sets it as child of overall scenario gameObject
