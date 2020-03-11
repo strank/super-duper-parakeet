@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class RampBasicScenario : RampScenarioManager {
 
+    //public override void BuildScenario()
+    //{
+    //    CreateRamp();
+    //    CreateObstacle();
+    //}
+
     public override void BuildScenario()
     {
         CreateRamp();
-        CreateObstacle();
+        CreateScenarioWall();
     }
 }
