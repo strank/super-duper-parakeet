@@ -57,11 +57,14 @@ public class DemoManager : MonoBehaviour {
     }
 
     [SerializeField] private bool generateSpecificScenario = false;
+
+    [Header("For Specific Scenario Type Generation")]
     public PuzzleType puzzleType;
     public PulleyType pulleyType;
     public RampType rampType;
     public LeverType leverType;
 
+    [Header("For Varied Scenario Type Generation")]
     [SerializeField] private ScenarioManager[] pulleyScenarios;
     [SerializeField] private ScenarioManager[] seesawScenarios;
     [SerializeField] private ScenarioManager[] swingingPlatformScenarios;
@@ -70,9 +73,14 @@ public class DemoManager : MonoBehaviour {
     [SerializeField] private bool useSwingingPlatformScenarios;
     private List<ScenarioManager> possibleScenarios;
 
+    [Header("General Parameters")]
     [SerializeField] private int numberOfScenariosToGenerate = 1;
     [SerializeField] private float spacingBetweenScenarios = 10.0f;
-    
+    [SerializeField] private float scenarioWidth = 20.0f; // Space on the z-axis to use for scenarios
+
+    [Header("In Editor")]
+    [SerializeField] private bool drawCubeScenarioVolume = false;
+
     public GameObject ScenarioParent
     {
         get { return scenarioParent; }
@@ -203,9 +211,9 @@ public class DemoManager : MonoBehaviour {
             scenarioParent.transform.position = new Vector3(spacingBetweenScenarios * i, 0, 0);
 
             ScenarioManager currentScenario = scenarioManager.GetComponent<T>();
-            currentScenario.GetScenarioParent(scenarioParent);
-            //currentScenario.GetSeed(seed);
-            currentScenario.GetSeededRandomValue(psuedoRandom);
+            currentScenario.SetScenarioParent(scenarioParent);
+            currentScenario.SetScenarioWidth(scenarioWidth);
+            currentScenario.SetRNG(psuedoRandom);
             currentScenario.BuildScenario();
         }
     }
@@ -222,9 +230,7 @@ public class DemoManager : MonoBehaviour {
             selectedScenario.centralLocation = new Vector3(i * spacingBetweenScenarios, 0.0f, 0.0f);
             selectedScenario.BuildScenario();
 
-            // TODO: Use method consistent between all scenarios to generate
-            // TODO: Pass position with spacing factor to scenario to give it 
-            // a central location away from other scenarios.
+            // TODO:
             // Use randomly selected scenario index
         }
     }
@@ -243,6 +249,25 @@ public class DemoManager : MonoBehaviour {
         else
             Debug.Log("scenariosToAdd is empty.");
         
+    }
+
+    /*
+     * For use in Unity editor
+     * Draws a cube around the given scenario space per scenario to help give sense of volume encompassed 
+     * and allowed for each scenario.
+     */
+    private void OnDrawGizmos()
+    {
+        if (drawCubeScenarioVolume)
+        {
+            for (int i = 0; i < numberOfScenariosToGenerate; i++)
+            {
+                Gizmos.color = Color.yellow;
+                Vector3 cubeDimensions = new Vector3(spacingBetweenScenarios, 30.0f, scenarioWidth);
+                Vector3 cubeCenter = new Vector3(i * spacingBetweenScenarios, 15.0f, 0.0f);
+                Gizmos.DrawWireCube(cubeCenter, cubeDimensions);
+            }
+        }
     }
 
     #endregion
