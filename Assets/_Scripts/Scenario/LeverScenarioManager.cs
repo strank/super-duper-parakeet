@@ -27,6 +27,7 @@ public abstract class LeverScenarioManager : ScenarioManager {
     {
         CreateObstacleTerrain obstacle = creationManager.GetComponent<CreateObstacleTerrain>();
 
+        ReplaceParametersWithDMWidth(ref minWidth, ref maxWidth);
         // Use height instead of maxHeight so obstacle is never greater than ramp size
         obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight,
             scenarioParent, rng);

@@ -7,9 +7,6 @@ public abstract class PulleyScenarioManager : ScenarioManager {
     // Will contain any information that all Pulley Scenarios will use
 
     #region Variables
-    //[Header("What to Generate")]
-    //public bool isGeneratingRope = false;
-    //public bool isGeneratingWheels = false;
 
     [Header("Objects to Use as Pulley Ends")]
     [SerializeField]private GameObject[] startPulleyMassOptions;
@@ -62,6 +59,7 @@ public abstract class PulleyScenarioManager : ScenarioManager {
     {
         CreateRope rope = creationManager.GetComponent<CreateRope>();
 
+        ReplaceParametersWithDMWidth(ref minStart.z, ref maxStart.z);
         rope.BuildRope(minStart, maxStart, minLength, maxLength, startPulleyMassOptions, endPulleyMassOptions, scenarioParent, rng);
 
         // Allows CreateRope to calculate these first, and then bring the values back here to use in CreatePulleyWheelSetup

@@ -28,6 +28,9 @@ public abstract class RampScenarioManager : ScenarioManager {
     {
         CreateRamp ramp = creationManager.GetComponent<CreateRamp>();
 
+        ReplaceParametersWithDMWidth(ref minStart.z, ref maxStart.z);
+        Debug.Log("minWidth is now: " + minWidth + " and maxWidth is now: " + maxWidth);
+        Debug.Log("minStart is: " + minStart + " and maxStart is: " + maxStart);
         ramp.BuildRamp(minStart, maxStart, minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, 
             scenarioParent, rng);
 
@@ -39,8 +42,19 @@ public abstract class RampScenarioManager : ScenarioManager {
     {
         CreateObstacleTerrain obstacle = creationManager.GetComponent<CreateObstacleTerrain>();
 
+        ReplaceParametersWithDMWidth(ref minStart.z, ref maxStart.z);
         // Use height instead of maxHeight so obstacle is never greater than ramp size
         obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, minWidth, maxWidth, minHeight, height,
+            scenarioParent, rng);
+    }
+
+    protected void CreateScenarioWall()
+    {
+        CreateObstacleTerrain obstacle = creationManager.GetComponent<CreateObstacleTerrain>();
+
+        ReplaceParametersWithDMWidth(ref minWidth, ref maxWidth);
+
+        obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, scenarioWidth, scenarioWidth, minHeight, height,
             scenarioParent, rng);
     }
 

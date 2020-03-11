@@ -6,10 +6,12 @@ public abstract class ScenarioManager : MonoBehaviour {
 
     #region Variables
     public Vector3 centralLocation;
+    public bool replaceWidthByDM = false;
+
     protected GameObject creationManager;
     protected GameObject scenarioParent;
-    //protected string seed;
     protected System.Random rng;
+    protected float scenarioWidth;
 
     #endregion
 
@@ -22,19 +24,35 @@ public abstract class ScenarioManager : MonoBehaviour {
         creationManager = DemoManager.Instance.creationManager;
     }
     
-    public void GetScenarioParent(GameObject parent)
+    public void SetScenarioParent(GameObject parent)
     {
         scenarioParent = parent;
     }
 
-    //public void GetSeed(string demoSeed)
-    //{
-    //    seed = demoSeed;
-    //}
-
-    public void GetSeededRandomValue(System.Random psuedoRandom)
+    public void SetRNG(System.Random psuedoRandom)
     {
         rng = psuedoRandom;
+    }
+
+    public void SetScenarioWidth(float width)
+    {
+        scenarioWidth = width;
+    }
+
+    /*
+     * Allows any ScenarioManager type objects to set any pair of parameters according to the scenarioWidth 
+     * passed down from the DemoManager.
+     * The passed parameter values are directly changed since this method uses a direct reference.
+     * Contains extra calculations to accurately determine how to use scenarioWidth.
+     */
+    protected void ReplaceParametersWithDMWidth(ref float minValue, ref float maxValue)
+    {
+        if (replaceWidthByDM)
+        {
+            Debug.Log("Width override enacted.");
+            minValue = -scenarioWidth / 2;
+            maxValue = scenarioWidth / 2;
+        }
     }
 
     public abstract void BuildScenario();
