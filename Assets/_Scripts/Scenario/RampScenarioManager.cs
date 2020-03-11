@@ -8,8 +8,8 @@ public abstract class RampScenarioManager : ScenarioManager {
     #region Variables
     [Header("Parameter Ranges")]
     [Header("Ramp Dimensions")]
-    public float minLength = 2.0f;
-    public float maxLength = 10.0f;
+    public float minLength = 3.0f;
+    public float maxLength = 5.0f;
     public float minWidth = 2.0f;
     public float maxWidth = 10.0f;
     public float minHeight = 2.0f;
@@ -31,11 +31,14 @@ public abstract class RampScenarioManager : ScenarioManager {
         ReplaceParametersWithDMWidth(ref minStart.z, ref maxStart.z);
         Debug.Log("minWidth is now: " + minWidth + " and maxWidth is now: " + maxWidth);
         Debug.Log("minStart is: " + minStart + " and maxStart is: " + maxStart);
+        ConstrainPlacementBasedOnScenarioLength();
+
         ramp.BuildRamp(minStart, maxStart, minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight, 
             scenarioParent, rng);
 
         // Needed to pass on to height range for obstacle
         height = ramp.Height;
+        Debug.Log("Height from ramp height is: " + height);
     }
 
     protected void CreateObstacle()
@@ -52,10 +55,17 @@ public abstract class RampScenarioManager : ScenarioManager {
     {
         CreateObstacleTerrain obstacle = creationManager.GetComponent<CreateObstacleTerrain>();
 
-        ReplaceParametersWithDMWidth(ref minWidth, ref maxWidth);
-
-        obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, scenarioWidth, scenarioWidth, minHeight, height,
+        obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, scenarioWidth, scenarioWidth, height, height + 1.0f,
             scenarioParent, rng);
+
+        Vector3 placement = new Vector3(effectiveScenarioLength - obstacle.Length, 0.0f, obstacle.Width / 2);
+        obstacle.GeneratedObstacle.transform.localPosition = placement;
+    }
+
+    private void ConstrainPlacementBasedOnScenarioLength()
+    {
+        minStart.x = -effectiveScenarioLength;
+        maxStart.x = effectiveScenarioLength;
     }
 
     #endregion
