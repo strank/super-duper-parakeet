@@ -12,6 +12,8 @@ public abstract class ScenarioManager : MonoBehaviour {
     protected GameObject scenarioParent;
     protected System.Random rng;
     protected float scenarioWidth;
+    protected float scenarioLength;
+    protected float effectiveScenarioLength;
 
     #endregion
 
@@ -37,6 +39,12 @@ public abstract class ScenarioManager : MonoBehaviour {
     public void SetScenarioWidth(float width)
     {
         scenarioWidth = width;
+    }
+
+    public void SetScenarioLength(float length)
+    {
+        scenarioLength = length;
+        effectiveScenarioLength = length / 2;
     }
 
     /*
