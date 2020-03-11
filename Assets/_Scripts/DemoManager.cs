@@ -213,6 +213,7 @@ public class DemoManager : MonoBehaviour {
             ScenarioManager currentScenario = scenarioManager.GetComponent<T>();
             currentScenario.SetScenarioParent(scenarioParent);
             currentScenario.SetScenarioWidth(scenarioWidth);
+            currentScenario.SetScenarioLength(spacingBetweenScenarios);
             currentScenario.SetRNG(psuedoRandom);
             currentScenario.BuildScenario();
         }
