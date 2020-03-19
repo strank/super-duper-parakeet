@@ -81,12 +81,6 @@ public class DemoManager : MonoBehaviour {
     [Header("In Editor")]
     [SerializeField] private bool drawCubeScenarioVolume = false;
 
-    public GameObject ScenarioParent
-    {
-        get { return scenarioParent; }
-    }
-    private GameObject scenarioParent;
-
     public string Seed
     {
         get { return seed; }
@@ -206,7 +200,7 @@ public class DemoManager : MonoBehaviour {
     {
         for (int i = 0; i < numberOfScenariosToGenerate; i++)
         {
-            scenarioParent = new GameObject();
+            GameObject scenarioParent = new GameObject();
             scenarioParent.name = "ScenarioSpecific" + i;
             scenarioParent.transform.position = new Vector3(spacingBetweenScenarios * i, 0, 0);
 
