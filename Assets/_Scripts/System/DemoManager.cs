@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HumanAPI;
+using System;
 
 public enum PuzzleType
 {
@@ -177,7 +178,14 @@ public class DemoManager : MonoBehaviour {
                 switch (rampType)
                 {
                     case RampType.Basic:
-                        BuildSpecificScenario<RampBasicScenario>();
+                        RampBasicScenario s = new RampBasicScenario();
+                        Debug.Log("s scenario before set equal");
+                        s.OutputLog();
+                        s = scenarioManager.GetComponent<RampBasicScenario>();
+                        Debug.Log("s scenario AFTER set equal");
+                        s.OutputLog();
+                        //BuildSpecificScenario<RampBasicScenario>();
+                        TESTETTESTESBuildSpecificScenario(s);
                         break;
                     case RampType.Build:
                         Debug.Log("RampBuild type not implemented yet.");
@@ -205,11 +213,34 @@ public class DemoManager : MonoBehaviour {
             scenarioParent.transform.position = new Vector3(spacingBetweenScenarios * i, 0, 0);
 
             ScenarioManager currentScenario = scenarioManager.GetComponent<T>();
+            //ScenarioManager testScenario = new < T >;
+            //Type s1 = typeof(T);
+            //ScenarioManager testtesttest = new T();
+            //ScenarioManager rampTest = new RampBasicScenario();
             currentScenario.SetScenarioParent(scenarioParent);
             currentScenario.SetScenarioWidth(scenarioWidth);
             currentScenario.SetScenarioLength(spacingBetweenScenarios);
             currentScenario.SetRNG(psuedoRandom);
             currentScenario.BuildScenario();
+        }
+    }
+
+    /*
+     * Helps perform steps for building any specific scenario
+     */
+    private void TESTETTESTESBuildSpecificScenario(ScenarioManager s)
+    {
+        for (int i = 0; i < numberOfScenariosToGenerate; i++)
+        {
+            GameObject scenarioParent = new GameObject();
+            scenarioParent.name = "ScenarioSpecific" + i;
+            scenarioParent.transform.position = new Vector3(spacingBetweenScenarios * i, 0, 0);
+
+            s.SetScenarioParent(scenarioParent);
+            s.SetScenarioWidth(scenarioWidth);
+            s.SetScenarioLength(spacingBetweenScenarios);
+            s.SetRNG(psuedoRandom);
+            s.BuildScenario();
         }
     }
 
@@ -220,7 +251,7 @@ public class DemoManager : MonoBehaviour {
     {
         for (int i = 0; i < numberOfScenariosToGenerate; i++)
         {
-            int randomScenarioIndex = Random.Range(0, possibleScenarios.Count);
+            int randomScenarioIndex = UnityEngine.Random.Range(0, possibleScenarios.Count);
             ScenarioManager selectedScenario = possibleScenarios[randomScenarioIndex];
             selectedScenario.centralLocation = new Vector3(i * spacingBetweenScenarios, 0.0f, 0.0f);
             selectedScenario.BuildScenario();
