@@ -1013,8 +1013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3a5816fa2999143b94b9bbd37469b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1782437532145070, guid: 8994858d4b267634d82973572f5a00c2,
-    type: 2}
 --- !u!114 &1330186158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,6 +1187,7 @@ MonoBehaviour:
   maxHeight: 0.5
   minStart: {x: 0, y: 0, z: 0}
   maxStart: {x: 1, y: 1, z: 1}
+  prefabListObstacles: []
 --- !u!114 &1346344128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1209,8 @@ MonoBehaviour:
   maxHeight: 6
   minStart: {x: 0, y: 0, z: 0}
   maxStart: {x: 3, y: 3, z: 3}
+  prefabListObstacles:
+  - {fileID: 1782437532145070, guid: 8994858d4b267634d82973572f5a00c2, type: 2}
 --- !u!1 &1387846741
 GameObject:
   m_ObjectHideFlags: 0
