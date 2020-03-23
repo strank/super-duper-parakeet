@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CreateObstacleTerrain : Create {
@@ -47,7 +48,7 @@ public class CreateObstacleTerrain : Create {
     }
 
     // Always set for this Create class
-    public GameObject obstaclePrefab;
+    private GameObject[] prefabOptions;
     private System.Random seedValue;
 
     #endregion
@@ -58,7 +59,7 @@ public class CreateObstacleTerrain : Create {
      * Core method for allowing other classes to use this one to construct the proper seesaw for the situation
      */
     public void BuildObstacle(Vector3 _minStart, Vector3 _maxStart, float _minLength, float _maxLength, float _minWidth, float _maxWidth,
-        float _minHeight, float _maxHeight, GameObject parent, System.Random _seedValue)
+        float _minHeight, float _maxHeight, GameObject[] _prefabOptions, GameObject parent, System.Random _seedValue)
     {
         // Assign passed in set of parameters within this class to use for ranged generation
         minStart = _minStart;
@@ -69,6 +70,7 @@ public class CreateObstacleTerrain : Create {
         maxWidth = _maxWidth;
         minHeight = _minHeight;
         maxHeight = _maxHeight;
+        prefabOptions = _prefabOptions;
 
         // Core values to set for controlling the child/parent hierarchy of the scenario and the randomization
         // with the seeding
@@ -85,9 +87,9 @@ public class CreateObstacleTerrain : Create {
      */
     public void GenerateObstacle()
     {
-        // Instantiates a new gameObject instance of the seesawPrefab
-        //GameObject generatedObstacle = (GameObject)Instantiate(obstaclePrefab);
-        generatedObstacle = (GameObject)Instantiate(obstaclePrefab);
+        // Instantiates a new gameObject instance of the obstacle
+        int selectedPrefabIndex = Random.Range(0, prefabOptions.Length);
+        generatedObstacle = (GameObject)Instantiate(prefabOptions[selectedPrefabIndex]);
 
         // Creates a scaling vector for all the dimensions of the seesaw and applies it to its localScale
         length = RandomGeneration.CalculateRandomFloatRange(minLength, maxLength, seedValue);

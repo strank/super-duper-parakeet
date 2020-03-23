@@ -18,6 +18,7 @@ public abstract class LeverScenarioManager : ScenarioManager {
     [Header("Other")]
     public Vector3 minStart = new Vector3(0.0f, 0.0f, 0.0f);
     public Vector3 maxStart = new Vector3(5.0f, 5.0f, 5.0f);
+    [SerializeField] private GameObject[] prefabListObstacles;
 
     #endregion
 
@@ -30,7 +31,7 @@ public abstract class LeverScenarioManager : ScenarioManager {
         ReplaceParametersWithDMWidth(ref minWidth, ref maxWidth);
         // Use height instead of maxHeight so obstacle is never greater than ramp size
         obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, minWidth, maxWidth, minHeight, maxHeight,
-            scenarioParent, rng);
+            prefabListObstacles, scenarioParent, rng);
     }
 
     #endregion

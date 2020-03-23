@@ -19,6 +19,7 @@ public abstract class RampScenarioManager : ScenarioManager {
     [Header("Other")]
     public Vector3 minStart = new Vector3(0.0f, 0.0f, 0.0f);
     public Vector3 maxStart = new Vector3(5.0f, 5.0f, 5.0f);
+    [SerializeField] private GameObject[] prefabListObstacles;
 
     #endregion
 
@@ -48,15 +49,16 @@ public abstract class RampScenarioManager : ScenarioManager {
         ReplaceParametersWithDMWidth(ref minStart.z, ref maxStart.z);
         // Use height instead of maxHeight so obstacle is never greater than ramp size
         obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, minWidth, maxWidth, minHeight, height,
-            scenarioParent, rng);
+            prefabListObstacles, scenarioParent, rng);
     }
 
     protected void CreateScenarioWall()
     {
-        CreateObstacleTerrain obstacle = creationManager.GetComponent<CreateObstacleTerrain>();
+        //CreateObstacleTerrain obstacle = creationManager.GetComponent<CreateObstacleTerrain>();
+        CreateObstacleTerrain obstacle = new CreateObstacleTerrain();
 
         obstacle.BuildObstacle(minStart, maxStart, minLength, maxLength, scenarioWidth, scenarioWidth, height, height + 1.0f,
-            scenarioParent, rng);
+            prefabListObstacles, scenarioParent, rng);
 
         Vector3 placement = new Vector3(effectiveScenarioLength - obstacle.Length, 0.0f, obstacle.Width / 2);
         obstacle.GeneratedObstacle.transform.localPosition = placement;
