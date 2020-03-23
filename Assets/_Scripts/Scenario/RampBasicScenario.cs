@@ -14,5 +14,20 @@ public class RampBasicScenario : RampScenarioManager {
     {
         CreateRamp();
         CreateScenarioWall();
+
+        Debug.Log("s scenario completed");
+        OutputLog();
+    }
+
+    public void OutputLog()
+    {
+        Debug.Log("minLength: " + minLength + 
+            " maxLength: " + maxLength + 
+            " minWidth: " + minWidth + 
+            " maxWidth: " + maxWidth + 
+            " minHeight: " + minHeight +
+            " maxHeight: " + maxHeight + 
+            " minStart: " + minStart + 
+            " maxStart: " + maxStart);
     }
 }
