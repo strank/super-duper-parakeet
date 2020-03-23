@@ -85,7 +85,6 @@ public class SkillManager : MonoBehaviour {
         };
 
         return allSkills;
-            
     }
 
     /*
@@ -101,8 +100,8 @@ public class SkillManager : MonoBehaviour {
      *  Add a snapshot of how the current skill set array looks to a list which will record all the various states
      *  of the skill set as the generation processes.
      */
-    public void RecordSkillSet(Skill[] set)
+    public void RecordCurrentSkillSet()
     {
-        recordedSkillSets.Add(set);
+        recordedSkillSets.Add(skillSet);
     }
 }
