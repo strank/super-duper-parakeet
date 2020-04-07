@@ -178,14 +178,7 @@ public class DemoManager : MonoBehaviour {
                 switch (rampType)
                 {
                     case RampType.Basic:
-                        RampBasicScenario s = new RampBasicScenario();
-                        Debug.Log("s scenario before set equal");
-                        s.OutputLog();
-                        s = scenarioManager.GetComponent<RampBasicScenario>();
-                        Debug.Log("s scenario AFTER set equal");
-                        s.OutputLog();
-                        //BuildSpecificScenario<RampBasicScenario>();
-                        TESTETTESTESBuildSpecificScenario(s);
+                        TEST20200407_BuildSpecificScenario<RampBasicScenario>();
                         break;
                     case RampType.Build:
                         Debug.Log("RampBuild type not implemented yet.");
@@ -226,9 +219,9 @@ public class DemoManager : MonoBehaviour {
     }
 
     /*
-     * Helps perform steps for building any specific scenario
+     * TEST
      */
-    private void TESTETTESTESBuildSpecificScenario(ScenarioManager s)
+    private void TEST20200407_BuildSpecificScenario<T>() where T : ScenarioManager, new()
     {
         for (int i = 0; i < numberOfScenariosToGenerate; i++)
         {
@@ -236,12 +229,26 @@ public class DemoManager : MonoBehaviour {
             scenarioParent.name = "ScenarioSpecific" + i;
             scenarioParent.transform.position = new Vector3(spacingBetweenScenarios * i, 0, 0);
 
-            s.SetScenarioParent(scenarioParent);
-            s.SetScenarioWidth(scenarioWidth);
-            s.SetScenarioLength(spacingBetweenScenarios);
-            s.SetRNG(psuedoRandom);
-            s.BuildScenario();
+            T currentScenario = new T();
+
+
+            Debug.Log("Scenario " + scenarioParent.name + " BEFORE set equal");
+            currentScenario.OutputLog();
+            currentScenario = scenarioManager.GetComponent<T>();
+            Debug.Log("Scenario " + scenarioParent.name + " AFTER set equal");
+            currentScenario.OutputLog();
+
+            currentScenario.SetScenarioParent(scenarioParent);
+            currentScenario.SetScenarioWidth(scenarioWidth);
+            currentScenario.SetScenarioLength(spacingBetweenScenarios);
+            currentScenario.SetRNG(psuedoRandom);
+            currentScenario.BuildScenario();
         }
+    }
+
+    private void Thingy<T>() where T: ScenarioManager, new()
+    {
+        T testobject = new T();
     }
 
     /*
