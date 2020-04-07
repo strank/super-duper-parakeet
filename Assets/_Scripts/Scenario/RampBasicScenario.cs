@@ -19,8 +19,9 @@ public class RampBasicScenario : RampScenarioManager {
         OutputLog();
     }
 
-    public void OutputLog()
+    public override void OutputLog()
     {
+        base.OutputLog();
         Debug.Log("minLength: " + minLength + 
             " maxLength: " + maxLength + 
             " minWidth: " + minWidth + 

@@ -19,6 +19,7 @@ public abstract class ScenarioManager : MonoBehaviour {
 
     #region Methods
 
+
     private void Awake()
     {
         // Ensures every object inheriting from ScenarioManager has a reference to the 
@@ -64,6 +65,10 @@ public abstract class ScenarioManager : MonoBehaviour {
     }
 
     public abstract void BuildScenario();
+    public virtual void OutputLog()
+    {
+        Debug.Log("Scenario Name is TEST");
+    }
 
 
     #endregion
