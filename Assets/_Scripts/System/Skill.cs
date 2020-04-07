@@ -5,24 +5,28 @@ using UnityEngine;
 [System.Serializable]
 public struct Skill
 {
+	// Name of the Skill
 	public string Name
 	{
 		get { return name; }
 	}
 	private string name;
 
+	// Determine whether the Skill should be used for this current generation at all
 	public bool UseSkill
 	{
 		get { return useSkill; }
 	}
 	[SerializeField]private bool useSkill;
 
+	// Keep track of whether a Skill has been used in the generation process so far
 	public bool Used
 	{
 		get { return used; }
 	}
 	private bool used;
 
+	// Used to determine how likely a Skill should be used in each pass of the generation system
 	public int Priority
 	{
 		get { return priority; }

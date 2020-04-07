@@ -35,6 +35,9 @@ public class SkillManager : MonoBehaviour {
     [SerializeField] private Skill reduceMass = new Skill("ReduceMass");
     [SerializeField] private Skill increaseMass = new Skill("IncreaseMass");
 
+    // Dictionary to keep track of all the Skills and access them as needed
+    public Dictionary<string, Skill> skillDictionary = new Dictionary<string, Skill>();
+
     public Skill[] originalSkillSet;
     public Skill[] skillSet;
 
@@ -45,6 +48,7 @@ public class SkillManager : MonoBehaviour {
     {
         originalSkillSet = CreateSkillList();
         skillSet = originalSkillSet;
+        FillDictionary();
         Debug.Log("Push name is: " + push.Name + "and Push useSkill is: " + push.UseSkill);
         Debug.Log("Push priority is: " + push.Priority);
     }
@@ -85,6 +89,18 @@ public class SkillManager : MonoBehaviour {
         };
 
         return allSkills;
+    }
+
+    /*
+     * Initializes the skillDictionary by filling it with every skill from the originalSkillSet, and assining the key 
+     * as the same name variable within the Skill object itself to keep those consistent.
+     */
+    private void FillDictionary()
+    {
+        foreach (Skill skill in originalSkillSet)
+        {
+            skillDictionary.Add(skill.Name, skill);
+        }
     }
 
     /*
