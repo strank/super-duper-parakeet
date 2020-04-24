@@ -31,6 +31,7 @@ public class HFFSimInput {
 
     public void ConnectController() {
         xboxController.Connect();
+        xboxController.AutoSubmitReport = false;
     }
 
     public void DisconnectController() {
@@ -38,30 +39,26 @@ public class HFFSimInput {
         vigemClient.Dispose();
     }
 
+    public void SubmitInput() {
+        xboxController.SubmitReport();
+    }
+
     // Functions corresponding to the Input Manager mapping in Unity:
 
     // Jump is Button A
-    public void JumpStart() {
-        xboxController.SetButtonState(Xbox360Button.A, true);
-    }
-    public void JumpEnd() {
-        xboxController.SetButtonState(Xbox360Button.A, false);
+    public void JumpSet(bool state) {
+        xboxController.SetButtonState(Xbox360Button.A, state);
     }
 
     // LeftGrab is LT
-    public void LeftGrabStart() {
-        xboxController.SetSliderValue(Xbox360Slider.LeftTrigger, 0xFF);
-    }
-    public void LeftGrabEnd() {
-        xboxController.SetSliderValue(Xbox360Slider.LeftTrigger, 0x00);
+    public void LeftGrabSet(bool state)
+    {
+        xboxController.SetSliderValue(Xbox360Slider.LeftTrigger, (byte) (state ? 0xFF : 0x00));
     }
 
     // RightGrab is RT
-    public void RightGrabStart() {
-        xboxController.SetSliderValue(Xbox360Slider.RightTrigger, 0xFF);
-    }
-    public void RightGrabEnd() {
-        xboxController.SetSliderValue(Xbox360Slider.RightTrigger, 0x00);
+    public void RightGrabSet(bool state) {
+        xboxController.SetSliderValue(Xbox360Slider.RightTrigger, (byte) (state ? 0xFF : 0x00));
     }
 
     // LookHorizontal is right stick
