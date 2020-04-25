@@ -3427,7 +3427,7 @@ MonoBehaviour:
     vectorActionSize: 0500000005000000050000000500000002000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 11400000, guid: 2e9688b35f0065c46b4c1f3eb51f1900, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: HFFAgentBasic
