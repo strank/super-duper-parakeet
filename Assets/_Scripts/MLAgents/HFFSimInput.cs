@@ -51,14 +51,14 @@ public class HFFSimInput {
     }
 
     // LeftGrab is LT
-    public void LeftGrabSet(bool state)
+    public void LeftGrabSet(byte strength)
     {
-        xboxController.SetSliderValue(Xbox360Slider.LeftTrigger, (byte) (state ? 0xFF : 0x00));
+        xboxController.SetSliderValue(Xbox360Slider.LeftTrigger, strength);
     }
 
     // RightGrab is RT
-    public void RightGrabSet(bool state) {
-        xboxController.SetSliderValue(Xbox360Slider.RightTrigger, (byte) (state ? 0xFF : 0x00));
+    public void RightGrabSet(byte strength) {
+        xboxController.SetSliderValue(Xbox360Slider.RightTrigger, strength);
     }
 
     // LookHorizontal is right stick
@@ -73,6 +73,11 @@ public class HFFSimInput {
     public void Walk(short whereX, short whereY) {
         xboxController.SetAxisValue(Xbox360Axis.LeftThumbX, whereX);
         xboxController.SetAxisValue(Xbox360Axis.LeftThumbY, whereY);
+    }
+
+    // Play dead is Button X
+    public void PlayDeadSet(bool state) {
+        xboxController.SetButtonState(Xbox360Button.X, state);
     }
 
 }
